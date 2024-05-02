@@ -1,0 +1,46 @@
+//if you don't know what a parameter does, visit:
+//https://developer.valvesoftware.com/wiki/$phong
+"VertexLitGeneric"
+{
+    "$basetexture" "models\weapons\arc9_scp5k\glock\MI_Glock19X_TAN_rgb"
+    "$bumpmap" "models\weapons\arc9_scp5k\glock\MI_Glock19X_n"
+    "$phongexponenttexture" "models\weapons\arc9_scp5k\glock\MI_Glock19X_TAN_e"
+
+    "$color2" "[1 1 1]"
+    "$blendtintbybasealpha" "1"
+
+    "$phong" "1"
+    "$phongboost" "1"
+    "$phongfresnelranges" "[1 0.5 0]"
+    "$phongalbedotint" "0"
+
+    //rimlight doesn't properly show in hlmv, make sure you're changing these values in game
+    "$rimlight" "1"
+    "$rimlightexponent" "100"
+    "$rimmask" "1"
+    "$rimlightboost" "1"
+
+    "$normalmapalphaenvmapmask" "1"
+    "$envmapfresnel" "1"
+    "$envmap" "env_cubemap"
+    "$envmaptint" "[0.2 0.2 0.2]"
+
+    "$emissiveBlendEnabled" "1"
+	"$emissiveBlendTexture" "dev/null" 
+	"$emissiveBlendBaseTexture" "models\weapons\arc9_scp5k\glock\Glock_Emissive"
+	"$emissiveBlendFlowTexture" "dev/null"
+	"$emissiveBlendTint" "[1 1 1]"
+	"$emissiveBlendStrength" "1"
+	"$emissiveBlendScrollVector" "[0.0]"
+	
+	$detailblendmode 1
+    $detailblendfactor 0.15
+    $detail "models/weapons/arc9/colors/black_detail"
+    Proxies {
+        CustomCamo {
+            camoTexture $detail
+            camoScale $detailscale
+            blend $detailblendfactor
+        }
+    }
+}
