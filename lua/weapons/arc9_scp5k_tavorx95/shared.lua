@@ -284,7 +284,8 @@ SWEP.ShellModel = "models/shells/shell_762nato.mdl"
 
 SWEP.ShellEffectCount = 1
 SWEP.ShellSmoke = true
-SWEP.ShellScale = 0.5
+SWEP.ShellScale = 0.7
+SWEP.ShellCorrectAng = Angle(0, -90, 0)
 SWEP.ShellPhysBox = Vector(0.5, 0.5, 2)
 
 SWEP.ShellPitch = 100 -- for shell sounds
@@ -592,6 +593,17 @@ SWEP.Attachments = {
 -- Animations -----------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------
 SWEP.InstantSprintIdle = true -- Instantly go to idle_sprint instead of playing enter_sprint.
+SWEP.Hook_TranslateAnimation = function(swep, anim)
+    if !IsFirstTimePredicted() then return end
+
+    -- theres some mod for arc9eft that makes mag checks on bind and it manipulates EFTInspectnum value so well keep eft in name to keep functionality
+    if anim == "inspect" or anim == "inspect_empty" then
+        swep.EFTInspectnum = (swep.EFTInspectnum or 0) + 1
+        local rand = swep.EFTInspectnum
+        if rand == 1 then return anim .. "_look" end
+        if rand == 2 then swep.EFTInspectnum = 0 rand = 0 end
+    end
+end
 
 SWEP.Animations = {
     ["idle"] = {
@@ -768,7 +780,7 @@ SWEP.Animations = {
         },
     },
     --------------------------------------------------- Tacticool
-    ["inspect"] = {
+    ["inspect_look"] = {
         Source = {"inspect"},
         MinProgress = 0.8,
         FireASAP = true,
@@ -801,7 +813,7 @@ SWEP.Animations = {
             },
         },
     },
-	["inspect_empty"] = {
+	["inspect"] = {
         Source = {"magcheck_empty"},
         MinProgress = 0.8,
         FireASAP = true,

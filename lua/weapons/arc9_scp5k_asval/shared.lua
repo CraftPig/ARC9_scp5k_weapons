@@ -277,7 +277,8 @@ SWEP.ShellModel = "models/shells/shell_762nato.mdl"
 
 SWEP.ShellEffectCount = 1
 SWEP.ShellSmoke = true
-SWEP.ShellScale = 0.5
+SWEP.ShellScale = 0.7
+SWEP.ShellCorrectAng = Angle(0, -90, 0)
 SWEP.ShellPhysBox = Vector(0.5, 0.5, 2)
 
 SWEP.ShellPitch = 100 -- for shell sounds
@@ -405,55 +406,84 @@ SWEP.TriggerUpSound = ""
 -------------------------------------------------------------------------------------------------------
 -- Attachments ----------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------
+SWEP.DefaultBodygroups = "0000000"
 SWEP.AttachmentElements = {
-    ["grip_none_asval"] = {
-        Bodygroups = {
-            {1,0},
-        },
-    },
-    ["grip_asval"] = {
+    ["dustcover_none_asvalreal"] = {
         Bodygroups = {
             {1,1},
         },
     },
-    ["rail_asval"] = {
+	["dustcover_asvalreal"] = {
         Bodygroups = {
-            {2,1},
+            {1,0},
         },
     },
-	["rail_none_asval"] = {
+    ["stock_none_asvalreal"] = {
         Bodygroups = {
-            {2,1},
+            {4,1},
+        },
+    },
+    ["raileddustcover_asvalreal"] = {
+        Bodygroups = {
+            {5,1},
+        },
+    },
+	["frontgrip_asvalreal"] = {
+        Bodygroups = {
+            {6,1},
         },
     },
   }
 
 SWEP.Attachments = {
-    {
+	{
         PrintName = "Grip",
         DefaultAttName = "Default",
         Category = {"grip","grip_mk18","grip_m4","fas_ubgl"},
-		InstalledElements = {"grip_asval"},
-		UnInstalledElements = {"rail_none_asval"},
+		InstalledElements = {"frontgrip_asvalreal"},
 		InstallSound = "Generic_Grip_LargeAttach",
 		UninstallSound = "Generic_Grip_LargeDetach",
         Bone = "weapon",
-        Pos = Vector(0, -9.2, -1),
+        Pos = Vector(0, -10.6, -0.6),
+		Icon_Offset = Vector(0, 0, 2),
         Ang = Angle(0, 90, 180),
     },
-	{
+    {
+        PrintName = "Sights",
+        Bone = "weapon",
+        Pos = Vector(-0, -0.7, 1.75),
+        Ang = Angle(0, 90, -0),
+        Category = {"csgo_optic"},
+		InstalledElements = {"dustcover_none_asvalreal", "raileddustcover_asvalreal"},
+		InstallSound = "Generic_Sight_LargeAttach",
+		UninstallSound = "Generic_Sight_LargeDetach",
+        CorrectiveAng = Angle(0.3, 1.1, 0),
+		Scale = 0.8,
+    },
+    {
         PrintName = "Tactical",
         DefaultAttName = "Default",
         Category = {"csgo_tac"},
-		InstalledElements = {"grip_asval"},
-		UnInstalledElements = {"rail_none_asval"},
+		InstalledElements = {"frontgrip_asvalreal"},
 		InstallSound = "Generic_Light_LargeDetach",
 		UninstallSound = "Generic_Light_SmallAttach",
         Bone = "weapon",
 		Icon_Offset = Vector(0, 0, 0),
-        Pos = Vector(1, -9.25, 0.2),
-        Ang = Angle(0, 90, -90),
-		Scale = 0.9,
+        Pos = Vector(-0.99, -10.6, 0.5),
+        Ang = Angle(0, 90, 90),
+		Scale = 1,
+    },
+	{
+        PrintName = "Stock",
+        Category = {"csgo_tube"},
+        Bone = "weapon",
+        InstalledElements = {"stock_none_asvalreal"},
+		InstallSound = "Generic_Grip_LargeAttach",
+		UninstallSound = "Generic_Grip_LargeDetach",
+        Pos = Vector(-0, 3, -0),
+        Ang = Angle(0, 90, -0),
+        Icon_Offset = Vector(-0, 0, 0),
+		Scale = 1.1,
     },
     {
         PrintName = "Ammo",
@@ -473,6 +503,17 @@ SWEP.Attachments = {
 -- Animations -----------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------
 SWEP.InstantSprintIdle = true -- Instantly go to idle_sprint instead of playing enter_sprint.
+SWEP.Hook_TranslateAnimation = function(swep, anim)
+    if !IsFirstTimePredicted() then return end
+
+    -- theres some mod for arc9eft that makes mag checks on bind and it manipulates EFTInspectnum value so well keep eft in name to keep functionality
+    if anim == "inspect" or anim == "inspect_empty" then
+        swep.EFTInspectnum = (swep.EFTInspectnum or 0) + 1
+        local rand = swep.EFTInspectnum
+        if rand == 1 then return anim .. "_look" end
+        if rand == 2 then swep.EFTInspectnum = 0 rand = 0 end
+    end
+end
 
 SWEP.Animations = {
     ["idle"] = {
@@ -491,17 +532,6 @@ SWEP.Animations = {
     },
 	["exit_sights"] = {
         Source = {"ads_out"},
-        Time = 5,
-    },
-	["enter_sights_empty"] = {
-        Source = {"ads_in_empty"},
-        Time = 5,
-    },
-	["idle_sights_empty"] = {
-        Source = {"ads_idle_empty"},
-    },
-	["exit_sights_empty"] = {
-        Source = {"ads_out_empty"},
         Time = 5,
     },
     --------------------------------------------------- Fire
@@ -544,15 +574,6 @@ SWEP.Animations = {
             {s = "Generic_ClothEquip", t = 0 / 30},
         },
     },
-	["draw_empty"] = {
-        Source = {"equip_empty"},
-        MinProgress = 0.5,
-        FireASAP = true,
-		EventTable = {
-            {s = "WeaponARC9_MK17_Equip", t = 0 / 30},
-            {s = "Generic_ClothEquip", t = 0 / 30},
-        },
-    },
 	["holster"] = {
         Source = {"dequip"},
         MinProgress = 0.5,
@@ -562,16 +583,6 @@ SWEP.Animations = {
             {s = "Generic_ClothUnequip", t = 0 / 30},
         },
     },
-	["holster_empty"] = {
-        Source = {"dequip_empty"},
-        MinProgress = 0.5,
-        FireASAP = true,
-		EventTable = {
-            {s = "WeaponARC9_MK17_Unequip", t = 0 / 30},
-            {s = "Generic_ClothUnequip", t = 0 / 30},
-        },
-    },
-    
     --------------------------------------------------- Reload
     ["reload"] = {
         Source = {"reload"},
@@ -632,19 +643,19 @@ SWEP.Animations = {
                 rhik = 0
             },
             {
-                t = 0.68,
+                t = 0.65,
                 lhik = 0,
                 rhik = 0
             },
             {
-                t = 0.86,
+                t = 0.72,
                 lhik = 1,
                 rhik = 1
             },
         },
     },
     --------------------------------------------------- Tacticool
-    ["inspect"] = {
+    ["inspect_look"] = {
         Source = {"inspect"},
         MinProgress = 0.8,
         FireASAP = true,
@@ -672,6 +683,37 @@ SWEP.Animations = {
             },
             {
                 t = 1,
+                lhik = 1,
+                rhik = 1
+            },
+        },
+    },
+	["inspect"] = {
+        Source = {"magcheck"},
+        MinProgress = 0.8,
+        FireASAP = true,
+		EventTable = {
+            {s = "WeaponARC9_VSS_MagCheckOut", t = 0 / 30},
+			{s = "WeaponARC9_VSS_MagCheckIn", t = 55 / 30},
+        },
+		IKTimeLine = {
+            {
+                t = 0,
+                lhik = 1,
+                rhik = 1
+            },
+            {
+                t = 0.1,
+                lhik = 0,
+                rhik = 0
+            },
+            {
+                t = 0.7,
+                lhik = 0,
+                rhik = 0
+            },
+            {
+                t = 0.9,
                 lhik = 1,
                 rhik = 1
             },

@@ -325,8 +325,8 @@ SWEP.SightMidPoint = { -- Where the gun should be at the middle of it's irons
     Ang = Angle(0, 0, -45),
 }
 
-SWEP.ActivePos = Vector(-0, 0.0, 0)
-SWEP.ActiveAng = Angle(-0.0, 1, -0)
+SWEP.ActivePos = Vector(-0.35, 1.1, -0.8)
+SWEP.ActiveAng = Angle(-0.0, 3, -0)
 
 SWEP.MovingPos =  Vector(0, -0.5, 0)
 SWEP.MovingAng =  Angle(0, 0, 2)
@@ -474,7 +474,7 @@ SWEP.Attachments = {
 		InstallSound = "Generic_Grip_LargeAttach",
 		UninstallSound = "Generic_Grip_LargeDetach",
         Bone = "weapon",
-        Pos = Vector(0, -9.8, 0),
+        Pos = Vector(0, -9.8, -0.6),
         Ang = Angle(0, 90, 180),
     },
     {
@@ -538,6 +538,17 @@ SWEP.Attachments = {
 -- Animations -----------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------
 SWEP.InstantSprintIdle = true -- Instantly go to idle_sprint instead of playing enter_sprint.
+SWEP.Hook_TranslateAnimation = function(swep, anim)
+    if !IsFirstTimePredicted() then return end
+
+    -- theres some mod for arc9eft that makes mag checks on bind and it manipulates EFTInspectnum value so well keep eft in name to keep functionality
+    if anim == "inspect" or anim == "inspect_empty" then
+        swep.EFTInspectnum = (swep.EFTInspectnum or 0) + 1
+        local rand = swep.EFTInspectnum
+        if rand == 1 then return anim .. "_look" end
+        if rand == 2 then swep.EFTInspectnum = 0 rand = 0 end
+    end
+end
 
 SWEP.Animations = {
     ["idle"] = {
@@ -679,7 +690,7 @@ SWEP.Animations = {
         },
     },
     --------------------------------------------------- Tacticool
-    ["inspect"] = {
+    ["inspect_look"] = {
         Source = {"inspect"},
         MinProgress = 0.8,
         FireASAP = true,
@@ -707,6 +718,37 @@ SWEP.Animations = {
             },
             {
                 t = 1,
+                lhik = 1,
+                rhik = 1
+            },
+        },
+    },
+	["inspect"] = {
+        Source = {"magcheck"},
+        MinProgress = 0.8,
+        FireASAP = true,
+		EventTable = {
+            {s = "WeaponARC9_AK74M_MagCheckOut", t = 0 / 30},
+			{s = "WeaponARC9_AK74M_MagCheckIn", t = 75 / 30},
+        },
+		IKTimeLine = {
+            {
+                t = 0,
+                lhik = 1,
+                rhik = 1
+            },
+            {
+                t = 0.1,
+                lhik = 0,
+                rhik = 0
+            },
+            {
+                t = 0.77,
+                lhik = 0,
+                rhik = 0
+            },
+            {
+                t = 0.83,
                 lhik = 1,
                 rhik = 1
             },

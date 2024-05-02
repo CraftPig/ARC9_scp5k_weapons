@@ -265,7 +265,8 @@ SWEP.ShellModel = "models/shells/shell_9mm.mdl"
 
 SWEP.ShellEffectCount = 1
 SWEP.ShellSmoke = true
-SWEP.ShellScale = 0.5
+SWEP.ShellScale = 0.75
+SWEP.ShellCorrectAng = Angle(0, -90, 0)
 SWEP.ShellPhysBox = Vector(0.5, 0.5, 2)
 
 SWEP.ShellPitch = 100 -- for shell sounds
@@ -297,7 +298,7 @@ SWEP.CamOffsetAng = Angle(0, 0, 0)
 
 -----------------------
 ---- Viewmodel Position
-SWEP.ViewModelFOVBase = 85
+SWEP.ViewModelFOVBase = 90
 
 SWEP.IronSights = {
     Pos = Vector(-2.9, -1, 2.9),
@@ -472,6 +473,17 @@ SWEP.Attachments = {
 -- Animations -----------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------
 SWEP.InstantSprintIdle = true -- Instantly go to idle_sprint instead of playing enter_sprint.
+SWEP.Hook_TranslateAnimation = function(swep, anim)
+    if !IsFirstTimePredicted() then return end
+
+    -- theres some mod for arc9eft that makes mag checks on bind and it manipulates EFTInspectnum value so well keep eft in name to keep functionality
+    if anim == "inspect" or anim == "inspect_empty" then
+        swep.EFTInspectnum = (swep.EFTInspectnum or 0) + 1
+        local rand = swep.EFTInspectnum
+        if rand == 1 then return anim .. "_look" end
+        if rand == 2 then swep.EFTInspectnum = 0 rand = 0 end
+    end
+end
 
 SWEP.Animations = {
     ["idle"] = {
@@ -590,7 +602,7 @@ SWEP.Animations = {
         },
     },
     --------------------------------------------------- Tacticool
-    ["inspect"] = {
+    ["inspect_look"] = {
         Source = {"inspect"},
         MinProgress = 0.8,
         FireASAP = true,
@@ -599,6 +611,15 @@ SWEP.Animations = {
 			{s = "WeaponARC9_P320_BoltBack", t = 80 / 30},
 			{s = "WeaponARC9_P320_BoltForward", t = 126 / 30},
             {s = "WeaponARC9_P320_BoltHit", t = 142 / 30},
+        },
+    },
+	["inspect"] = {
+        Source = {"magcheck"},
+        MinProgress = 0.8,
+        FireASAP = true,
+		EventTable = {
+            {s = "WeaponARC9_P320_MagCheckOut", t = 0 / 30},
+			{s = "WeaponARC9_P320_MagCheckIn", t = 60 / 30},
         },
     },
 	["inspect_empty"] = {

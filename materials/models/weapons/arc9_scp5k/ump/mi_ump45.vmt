@@ -6,7 +6,7 @@
     "$bumpmap" "models\weapons\arc9_scp5k\ump\MI_UMP45_n"
     "$phongexponenttexture" "models\weapons\arc9_scp5k\ump\MI_UMP45_e"
 
-    "$color2" "[1 1 1]"
+    "$color2" "[5 5 5]"
     "$blendtintbybasealpha" "1"
 
     "$phong" "1"

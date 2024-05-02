@@ -5,7 +5,7 @@ ATT = {}
 ATT.MenuCategory = "ARC9 - SCP: 5K Attachments"
 ATT.PrintName = [[Alt View]]
 ATT.Description = [[]]
-ATT.Icon = Material("entities/attachs/holdstyle.png", "mips smooth")
+ATT.Icon = Material("entities/att/att_temp.png", "mips smooth")
 
 ATT.SortOrder = 0
 ATT.Free = true
@@ -23,7 +23,7 @@ ATT = {}
 ATT.MenuCategory = "ARC9 - SCP: 5K Attachments"
 ATT.PrintName = [[Alt View]]
 ATT.Description = [[]]
-ATT.Icon = Material("entities/attachs/holdstyle.png", "mips smooth")
+ATT.Icon = Material("entities/att/att_temp.png", "mips smooth")
 
 ATT.SortOrder = 0
 ATT.Free = true
@@ -42,7 +42,7 @@ ATT = {}
 ATT.MenuCategory = "ARC9 - SCP: 5K Attachments"
 ATT.PrintName = [[Grip]]
 ATT.Description = [[]]
-ATT.Icon = Material("entities/attachs/holdstyle.png", "mips smooth")
+ATT.Icon = Material("entities/att/att_temp.png", "mips smooth")
 
 ATT.SortOrder = 0
 ATT.Free = true
@@ -58,7 +58,7 @@ ATT.MenuCategory = "ARC9 - SCP: 5K Attachments"
 ATT.PrintName = [[40 Round 5.56x45mm Tavor X-95 Mag]]
 ATT.CompactName = [[40-Round]]
 ATT.Description = [[]]
-ATT.Icon = Material("entities/attachs/holdstyle.png", "mips smooth")
+ATT.Icon = Material("entities/att/att_temp.png", "mips smooth")
 
 ATT.Category = {"scp5k_tavorx95mag"}
 ATT.Pros = {}
@@ -80,7 +80,7 @@ ATT.MenuCategory = "ARC9 - SCP: 5K Attachments"
 ATT.PrintName = [[20 Round 5.56x45mm Tavor X-95 Mag]]
 ATT.CompactName = [[20-Round]]
 ATT.Description = [[]]
-ATT.Icon = Material("entities/attachs/holdstyle.png", "mips smooth")
+ATT.Icon = Material("entities/att/att_temp.png", "mips smooth")
 
 ATT.Category = {"scp5k_tavorx95mag"}
 ATT.Pros = {}
@@ -102,7 +102,7 @@ ATT.MenuCategory = "ARC9 - SCP: 5K Attachments"
 ATT.PrintName = [[Extended Tavor X-95 Barrel]]
 ATT.CompactName = [[Ext. Barrel]]
 ATT.Description = [[]]
-ATT.Icon = Material("entities/attachs/holdstyle.png", "mips smooth")
+ATT.Icon = Material("entities/att/att_temp.png", "mips smooth")
 
 ATT.Category = {"scp5k_tavorxbarrel"}
 ATT.Pros = {}
@@ -124,7 +124,7 @@ ATT.MenuCategory = "ARC9 - SCP: 5K Attachments"
 ATT.PrintName = [[Folded MP7 Stock]]
 ATT.CompactName = [[Folded]]
 ATT.Description = [[]]
-ATT.Icon = Material("entities/attachs/holdstyle.png", "mips smooth")
+ATT.Icon = Material("entities/att/att_temp.png", "mips smooth")
 
 ATT.Category = {"scp5k_mp7stock"}
 ATT.Pros = {}
@@ -147,7 +147,7 @@ ATT.MenuCategory = "ARC9 - SCP: 5K Attachments"
 ATT.PrintName = [[40 Round 5.56x45mm Galil ACE 22N Mag]]
 ATT.CompactName = [[40-Round]]
 ATT.Description = [[]]
-ATT.Icon = Material("entities/attachs/holdstyle.png", "mips smooth")
+ATT.Icon = Material("entities/att/att_temp.png", "mips smooth")
 
 ATT.Category = {"scp5k_galilacemag"}
 ATT.Pros = {}
@@ -169,7 +169,7 @@ ATT.MenuCategory = "ARC9 - SCP: 5K Attachments"
 ATT.PrintName = [[25 Round 5.56x45mm Galil ACE 22N Mag]]
 ATT.CompactName = [[25-Round]]
 ATT.Description = [[]]
-ATT.Icon = Material("entities/attachs/holdstyle.png", "mips smooth")
+ATT.Icon = Material("entities/att/att_temp.png", "mips smooth")
 
 ATT.Category = {"scp5k_galilacemag"}
 ATT.Pros = {}
@@ -191,7 +191,7 @@ ATT.MenuCategory = "ARC9 - SCP: 5K Attachments"
 ATT.PrintName = [[200 Round 5.56x45mm LAMG Mag]]
 ATT.CompactName = [[200-Round]]
 ATT.Description = [[]]
-ATT.Icon = Material("entities/attachs/holdstyle.png", "mips smooth")
+ATT.Icon = Material("entities/att/att_temp.png", "mips smooth")
 
 ATT.Category = {"scp5k_lamgmag"}
 ATT.Pros = {}

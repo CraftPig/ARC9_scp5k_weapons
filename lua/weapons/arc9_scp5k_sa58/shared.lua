@@ -284,7 +284,8 @@ SWEP.ShellModel = "models/shells/shell_762nato.mdl"
 
 SWEP.ShellEffectCount = 1
 SWEP.ShellSmoke = true
-SWEP.ShellScale = 0.5
+SWEP.ShellScale = 0.9
+SWEP.ShellCorrectAng = Angle(0, -90, 0)
 SWEP.ShellPhysBox = Vector(0.5, 0.5, 2)
 
 SWEP.ShellPitch = 100 -- for shell sounds
@@ -316,7 +317,7 @@ SWEP.CamOffsetAng = Angle(0, 0, 0)
 
 -----------------------
 ---- Viewmodel Position
-SWEP.ViewModelFOVBase = 75
+SWEP.ViewModelFOVBase = 80
 
 SWEP.IronSights = {
     Pos = Vector(-1.64, 0.0, 1.75),
@@ -331,7 +332,7 @@ SWEP.SightMidPoint = { -- Where the gun should be at the middle of it's irons
     Ang = Angle(0, 0, -45),
 }
 
-SWEP.ActivePos = Vector(-0.0, 0.0, 1.0)
+SWEP.ActivePos = Vector(-0.0, -0.25, 0.75)
 SWEP.ActiveAng = Angle(-0.0, 1, -0)
 
 SWEP.MovingPos =  Vector(0, -0.5, 0)
@@ -498,7 +499,7 @@ SWEP.Attachments = {
 		InstallSound = "Generic_Sight_LargeAttach",
 		UninstallSound = "Generic_Sight_LargeDetach",
         CorrectiveAng = Angle(0.01, 0.7, 0),
-		Scale = 1,
+		Scale = 0.9,
     },
     -- {
         -- PrintName = "Tactical",
@@ -538,6 +539,17 @@ SWEP.Attachments = {
 -- Animations -----------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------
 SWEP.InstantSprintIdle = true -- Instantly go to idle_sprint instead of playing enter_sprint.
+SWEP.Hook_TranslateAnimation = function(swep, anim)
+    if !IsFirstTimePredicted() then return end
+
+    -- theres some mod for arc9eft that makes mag checks on bind and it manipulates EFTInspectnum value so well keep eft in name to keep functionality
+    if anim == "inspect" or anim == "inspect_empty" then
+        swep.EFTInspectnum = (swep.EFTInspectnum or 0) + 1
+        local rand = swep.EFTInspectnum
+        if rand == 1 then return anim .. "_look" end
+        if rand == 2 then swep.EFTInspectnum = 0 rand = 0 end
+    end
+end
 
 SWEP.Animations = {
     ["idle"] = {
@@ -714,13 +726,13 @@ SWEP.Animations = {
         },
     },
     --------------------------------------------------- Tacticool
-    ["inspect"] = {
+    ["inspect_look"] = {
         Source = {"inspect"},
         MinProgress = 0.8,
         FireASAP = true,
 		EventTable = {
             {s = "WeaponARC9_SA58_Rotate", t = 0 / 30},
-			{s = "WeaponARC9_SA58_BoltBack", t = 65 / 30},
+			{s = "WeaponARC9_SA58_BoltBack", t = 68 / 30},
 			{s = "WeaponARC9_SA58_BoltForward", t = 99 / 30},
             {s = "Generic_ClothEquip", t = 110 / 30},
         },
@@ -742,6 +754,38 @@ SWEP.Animations = {
             },
             {
                 t = 1,
+                lhik = 1,
+                rhik = 1
+            },
+        },
+    },
+	["inspect"] = {
+        Source = {"magcheck"},
+        MinProgress = 0.8,
+        FireASAP = true,
+		EventTable = {
+            {s = "WeaponARC9_SA58_MagCheckOut", t = 0 / 30},
+			{s = "WeaponARC9_SA58_MagCheckThrow", t = 24 / 30},
+			{s = "WeaponARC9_SA58_MagCheckIn", t = 48 / 30},
+        },
+		IKTimeLine = {
+            {
+                t = 0,
+                lhik = 1,
+                rhik = 1
+            },
+            {
+                t = 0.1,
+                lhik = 0,
+                rhik = 0
+            },
+            {
+                t = 0.62,
+                lhik = 0,
+                rhik = 0
+            },
+            {
+                t = 0.8,
                 lhik = 1,
                 rhik = 1
             },

@@ -284,7 +284,8 @@ SWEP.ShellModel = "models/shells/shell_762nato.mdl"
 
 SWEP.ShellEffectCount = 1
 SWEP.ShellSmoke = true
-SWEP.ShellScale = 0.5
+SWEP.ShellScale = 0.9
+SWEP.ShellCorrectAng = Angle(0, -90, 0)
 SWEP.ShellPhysBox = Vector(0.5, 0.5, 2)
 
 SWEP.ShellPitch = 100 -- for shell sounds
@@ -514,6 +515,17 @@ SWEP.Attachments = {
 -- Animations -----------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------
 SWEP.InstantSprintIdle = true -- Instantly go to idle_sprint instead of playing enter_sprint.
+SWEP.Hook_TranslateAnimation = function(swep, anim)
+    if !IsFirstTimePredicted() then return end
+
+    -- theres some mod for arc9eft that makes mag checks on bind and it manipulates EFTInspectnum value so well keep eft in name to keep functionality
+    if anim == "inspect" or anim == "inspect_empty" then
+        swep.EFTInspectnum = (swep.EFTInspectnum or 0) + 1
+        local rand = swep.EFTInspectnum
+        if rand == 1 then return anim .. "_look" end
+        if rand == 2 then swep.EFTInspectnum = 0 rand = 0 end
+    end
+end
 
 SWEP.Animations = {
     ["idle"] = {
@@ -626,8 +638,8 @@ SWEP.Animations = {
         FireASAP = true,
 		EventTable = {
             {s = "WeaponARC9_MK17_MagPouchUp", t = 0 / 30},
-			{s = "WeaponARC9_MK17_MagOut", t = 20 / 30},
-			{s = "WeaponARC9_MK17_MagIn", t = 35 / 30},
+			{s = "WeaponARC9_MK17_MagOut", t = 23 / 30},
+			{s = "WeaponARC9_MK17_MagIn", t = 38 / 30},
             {s = "WeaponARC9_MK17_MagPouchDown", t = 45 / 30},
 			{s = "WeaponARC9_MK17_HandlingBarrel", t = 70 / 30},
         },
@@ -663,7 +675,7 @@ SWEP.Animations = {
 			{s = "WeaponARC9_MK17_EmptyMagOut", t = 0 / 30},
 			{s = "WeaponARC9_MK17_EmptyMagPouch", t = 12 / 30},
 			{s = "WeaponARC9_MK17_EmptyMagIn", t = 41 / 30},
-			{s = "WeaponARC9_MK17_EmptyBolt", t = 70 / 30},
+			{s = "WeaponARC9_MK17_EmptyBolt", t = 71 / 30},
         },
 		IKTimeLine = {
             {
@@ -690,6 +702,37 @@ SWEP.Animations = {
     },
     --------------------------------------------------- Tacticool
     ["inspect"] = {
+        Source = {"magcheck"},
+        MinProgress = 0.8,
+        FireASAP = true,
+		EventTable = {
+            {s = "WeaponARC9_MK17_MagCheckOut", t = 0 / 30},
+			{s = "WeaponARC9_MK17_MagCheckIn", t = 55 / 30},
+        },
+		IKTimeLine = {
+            {
+                t = 0,
+                lhik = 1,
+                rhik = 1
+            },
+            {
+                t = 0.1,
+                lhik = 0,
+                rhik = 0
+            },
+            {
+                t = 0.61,
+                lhik = 0,
+                rhik = 0
+            },
+            {
+                t = 1,
+                lhik = 1,
+                rhik = 1
+            },
+        },
+    },
+	["inspect_look"] = {
         Source = {"inspect"},
         MinProgress = 0.8,
         FireASAP = true,
