@@ -222,7 +222,7 @@ SWEP.VisualRecoilRoll = 0 -- Roll tilt for visual recoil.
 
 --------------------------
 ---- Weapon Handling Stuff
-SWEP.BarrelLength = 40 -- Distance for nearwalling
+SWEP.BarrelLength = 0 -- Distance for nearwalling
 SWEP.PushBackForce = 0 -- Push the player back when shooting.
 SWEP.FreeAimRadius = 10 -- In degrees, how much this gun can free aim in hip fire.
 SWEP.Sway = 0.25 -- How much the gun sways.
@@ -308,6 +308,11 @@ SWEP.CamQCA_Mult = nil -- Intensity for QC camera movement.
 SWEP.CamQCA_Mult_ADS = nil -- Intensity for QC camera movement in ADS.
 SWEP.CamCoolView = false -- Enable to use procedural camera movement. Set CamQCA to muzzle QCA or something.
 SWEP.CamOffsetAng = Angle(0, 0, 0)
+
+-------------
+--- Bob stuff
+SWEP.BobSprintMult = 0.1 -- 
+SWEP.BobWalkMult = 0.5 -- same but for all non sprint actions
 
 -----------------------
 ---- Viewmodel Position
@@ -465,7 +470,7 @@ SWEP.Attachments = {
     {
         PrintName = "Muzzle",
         DefaultAttName = "Standard Muzzle",
-        Category = {"muzzle","muzzle_m4","muzzle_snipers"},
+        Category = {"muzzle","muzzle_m4","muzzle_snipers", "scp5k_muzzle"},
 		InstalledElements = {"muzzle_none_aug"},
 		InstallSound = "Generic_Barrel_LargeAttach",
 		UninstallSound = "Generic_Barrel_LargeDetach",
@@ -491,11 +496,11 @@ SWEP.Attachments = {
         Bone = "weapon",
         Pos = Vector(-0, -4.5, 2.1),
         Ang = Angle(0, 90, -0),
-        Category = {"csgo_optic"},
+        Category = {"csgo_optic", "scp5k_optic"},
 		InstalledElements = {"sights_none_aug", "manticoilrail_aug"},
 		InstallSound = "Generic_Sight_LargeAttach",
 		UninstallSound = "Generic_Sight_LargeDetach",
-        CorrectiveAng = Angle(-0.0, 0.0, 0),
+        CorrectiveAng = Angle(-0.0, 0.5, 0),
 		Scale = 1,
     },
     {

@@ -312,9 +312,14 @@ SWEP.CamQCA_Mult_ADS = nil -- Intensity for QC camera movement in ADS.
 SWEP.CamCoolView = false -- Enable to use procedural camera movement. Set CamQCA to muzzle QCA or something.
 SWEP.CamOffsetAng = Angle(0, 0, 0)
 
+-------------
+--- Bob stuff
+SWEP.BobSprintMult = 0.1 -- 
+SWEP.BobWalkMult = 0.5 -- same but for all non sprint actions
+
 -----------------------
 ---- Viewmodel Position
-SWEP.ViewModelFOVBase = 65
+SWEP.ViewModelFOVBase = 75
 
 SWEP.IronSights = {
     Pos = Vector(-2.47, -1, 0.87),
@@ -549,7 +554,7 @@ SWEP.Attachments = {
     -- },
     {
         PrintName = "Cosmetic",
-        Category = {"universal_camo"},
+        Category = {"universal_camo", "scp5k_lamg_skin"},
         CosmeticOnly = true,
     },
 }

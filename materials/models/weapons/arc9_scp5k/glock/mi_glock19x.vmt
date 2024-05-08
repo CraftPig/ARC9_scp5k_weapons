@@ -42,5 +42,4 @@
 	"$emissiveBlendTint" "[1 1 1]"
 	"$emissiveBlendStrength" "1"
 	"$emissiveBlendScrollVector" "[0.0]"
-
 }

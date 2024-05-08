@@ -209,7 +209,7 @@ SWEP.VisualRecoilRoll = 0 -- Roll tilt for visual recoil.
 
 --------------------------
 ---- Weapon Handling Stuff
-SWEP.BarrelLength = 15 -- Distance for nearwalling
+SWEP.BarrelLength = 0 -- Distance for nearwalling
 SWEP.PushBackForce = 0 -- Push the player back when shooting.
 SWEP.FreeAimRadius = 10 -- In degrees, how much this gun can free aim in hip fire.
 SWEP.Sway = 0.25 -- How much the gun sways.
@@ -295,6 +295,11 @@ SWEP.CamQCA_Mult = nil -- Intensity for QC camera movement.
 SWEP.CamQCA_Mult_ADS = nil -- Intensity for QC camera movement in ADS.
 SWEP.CamCoolView = false -- Enable to use procedural camera movement. Set CamQCA to muzzle QCA or something.
 SWEP.CamOffsetAng = Angle(0, 0, 0)
+
+-------------
+--- Bob stuff
+SWEP.BobSprintMult = 0.1 -- 
+SWEP.BobWalkMult = 0.5 -- same but for all non sprint actions
 
 -----------------------
 ---- Viewmodel Position
@@ -459,7 +464,7 @@ SWEP.Attachments = {
     },
     {
         PrintName = "Cosmetic",
-        Category = {"universal_camo"},
+        Category = {"universal_camo", "scp5k_p320_skin"},
         CosmeticOnly = true,
     },
 	{

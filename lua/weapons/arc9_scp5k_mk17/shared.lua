@@ -228,7 +228,7 @@ SWEP.RecoilKickAffectPitch = nil -- thing for eft, set to true if you want camer
 
 --------------------------
 ---- Weapon Handling Stuff
-SWEP.BarrelLength = 40 -- Distance for nearwalling
+SWEP.BarrelLength = 0 -- Distance for nearwalling
 SWEP.PushBackForce = 0 -- Push the player back when shooting.
 SWEP.FreeAimRadius = 10 -- In degrees, how much this gun can free aim in hip fire.
 SWEP.Sway = 0.25 -- How much the gun sways.
@@ -315,9 +315,14 @@ SWEP.CamQCA_Mult_ADS = nil -- Intensity for QC camera movement in ADS.
 SWEP.CamCoolView = false -- Enable to use procedural camera movement. Set CamQCA to muzzle QCA or something.
 SWEP.CamOffsetAng = Angle(0, 0, 0)
 
+-------------
+--- Bob stuff
+SWEP.BobSprintMult = 0.1 -- 
+SWEP.BobWalkMult = 0.5 -- same but for all non sprint actions
+
 -----------------------
 ---- Viewmodel Position
-SWEP.ViewModelFOVBase = 75
+SWEP.ViewModelFOVBase = 80
 
 SWEP.IronSights = {
     Pos = Vector(-3.22, -0.7, 1.06),
@@ -332,7 +337,7 @@ SWEP.SightMidPoint = { -- Where the gun should be at the middle of it's irons
     Ang = Angle(0, 0, -45),
 }
 
-SWEP.ActivePos = Vector(-1.20, 0.0, 1.0)
+SWEP.ActivePos = Vector(-1.1, 0.0, 0.7)
 SWEP.ActiveAng = Angle(-0.0, 1, -0)
 
 SWEP.MovingPos =  Vector(0, -0.5, 0)
@@ -444,7 +449,7 @@ SWEP.Attachments = {
     {
         PrintName = "Muzzle",
         DefaultAttName = "Standard Muzzle",
-        Category = {"muzzle","muzzle_m4","muzzle_snipers"},
+        Category = {"muzzle","muzzle_m4","muzzle_snipers", "scp5k_suppressor"},
 		InstalledElements = {"muzzle_none_mk17"},
 		UnInstalledElements = {"muzzle_mk17"},
 		InstallSound = "Generic_Barrel_LargeAttach",
@@ -469,7 +474,7 @@ SWEP.Attachments = {
         Bone = "weapon",
         Pos = Vector(-0, -3, 2.95),
         Ang = Angle(0, 90, -0),
-        Category = {"csgo_optic"},
+        Category = {"csgo_optic", "scp5k_optic"},
 		InstalledElements = {"iron_none_mk17"},
 		UnInstalledElements = {"iron_mk17"},
 		InstallSound = "Generic_Sight_LargeAttach",
@@ -506,7 +511,7 @@ SWEP.Attachments = {
     -- },
     {
         PrintName = "Cosmetic",
-        Category = {"universal_camo"},
+        Category = {"universal_camo", "scp5k_mk17_skin"},
         CosmeticOnly = true,
     },
 }

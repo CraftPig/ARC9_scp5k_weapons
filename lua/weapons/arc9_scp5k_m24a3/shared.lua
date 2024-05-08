@@ -225,7 +225,7 @@ SWEP.RecoilKickAffectPitch = nil -- thing for eft, set to true if you want camer
 
 --------------------------
 ---- Weapon Handling Stuff
-SWEP.BarrelLength = 15 -- Distance for nearwalling
+SWEP.BarrelLength = 0 -- Distance for nearwalling
 SWEP.PushBackForce = 0 -- Push the player back when shooting.
 SWEP.FreeAimRadius = 10 -- In degrees, how much this gun can free aim in hip fire.
 SWEP.Sway = 0.25 -- How much the gun sways.
@@ -312,6 +312,11 @@ SWEP.CamQCA_Mult = nil -- Intensity for QC camera movement.
 SWEP.CamQCA_Mult_ADS = nil -- Intensity for QC camera movement in ADS.
 SWEP.CamCoolView = false -- Enable to use procedural camera movement. Set CamQCA to muzzle QCA or something.
 SWEP.CamOffsetAng = Angle(0, 0, 0)
+
+-------------
+--- Bob stuff
+SWEP.BobSprintMult = 0.1 -- 
+SWEP.BobWalkMult = 0.5 -- same but for all non sprint actions
 
 -----------------------
 ---- Viewmodel Position
@@ -452,7 +457,7 @@ SWEP.Attachments = {
         Bone = "weapon",
         Pos = Vector(-0, -0.3, 1.8),
         Ang = Angle(0, 90, -0),
-        Category = {"csgo_optic"},
+        Category = {"csgo_optic", "scp5k_optic"},
 		InstalledElements = {"sights_none_m24a3", "sights1_none_m24a3"},
 		InstallSound = "Generic_Sight_LargeAttach",
 		UninstallSound = "Generic_Sight_LargeDetach",
