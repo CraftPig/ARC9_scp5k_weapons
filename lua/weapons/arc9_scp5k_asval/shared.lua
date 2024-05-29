@@ -209,19 +209,26 @@ SWEP.RecoilPerShot = 1
 
 ---- Weapon Visual Recoil
 SWEP.UseVisualRecoil = true
+SWEP.PhysicalVisualRecoil = false -- Visual recoil actually affects your aim point.
+SWEP.VisualRecoil = 0.01
 
-SWEP.VisualRecoil = 0.25
-SWEP.VisualRecoilMultSights = 0.1
-SWEP.VisualRecoilPositionBump = 1.5
-SWEP.VisualRecoilPositionBumpUp = 0.08 -- its a mult
+SWEP.VisualRecoilCenter = Vector(0, -5, 20) -- The "axis" of visual recoil. Where your hand is.
 
-SWEP.VisualRecoilUp = 0 -- Vertical tilt for visual recoil.F
-SWEP.VisualRecoilSide = 0 -- Horizontal tilt for visual recoil.
-SWEP.VisualRecoilRoll = 0 -- Roll tilt for visual recoil.
+SWEP.VisualRecoilUp = 100.0 -- Vertical tilt for visual recoil.F
+SWEP.VisualRecoilUpAddSighted = -100.0
+SWEP.VisualRecoilSide = 2 -- Horizontal tilt for visual recoil.
+SWEP.VisualRecoilRoll = 300.0 -- Roll tilt for visual recoil.
+
+SWEP.VisualRecoilPunch = 100 -- How far back visual recoil moves the gun.
+SWEP.VisualRecoilPunchMultSights = 2.55
+
+SWEP.VisualRecoilDampingConst = 80 -- How spring will be visual recoil, 120 is default
+SWEP.VisualRecoilSpringMagnitude = 5
+SWEP.VisualRecoilSpringPunchDamping = 5 -- ehh another val for "eft" recoil, 6 is default
 
 --------------------------
 ---- Weapon Handling Stuff
-SWEP.BarrelLength = 0 -- Distance for nearwalling
+SWEP.BarrelLength = 35 -- Distance for nearwalling
 SWEP.PushBackForce = 0 -- Push the player back when shooting.
 SWEP.FreeAimRadius = 10 -- In degrees, how much this gun can free aim in hip fire.
 SWEP.Sway = 0.25 -- How much the gun sways.
@@ -354,8 +361,8 @@ SWEP.SprintMidPoint = {
     Ang = Angle(0, 5, -25)
 }
 
-SWEP.NearWallPos = Vector(-0, -2, 0.0)
-SWEP.NearWallAng = Angle(-1, -5, -12)
+SWEP.NearWallPos = Vector(-0, -0, 0.0)
+SWEP.NearWallAng = Angle(20, -10, -10)
 
 SWEP.CustomizeAng = Angle(90, 0, 0)
 SWEP.CustomizePos = Vector(11.2, 36, 8.75)
@@ -444,7 +451,7 @@ SWEP.Attachments = {
 	{
         PrintName = "Grip",
         DefaultAttName = "Default",
-        Category = {"grip","grip_mk18","grip_m4","fas_ubgl"},
+        Category = {"grip","grip_mk18","grip_m4","fas_ubgl", "scp5k_foregrip"},
 		InstalledElements = {"frontgrip_asvalreal"},
 		InstallSound = "Generic_Grip_LargeAttach",
 		UninstallSound = "Generic_Grip_LargeDetach",
@@ -458,7 +465,7 @@ SWEP.Attachments = {
         Bone = "weapon",
         Pos = Vector(-0, -0.7, 1.75),
         Ang = Angle(0, 90, -0),
-        Category = {"csgo_optic"},
+        Category = {"csgo_optic", "scp5k_optic", "eft_optic_medium", "eft_optic_large"},
 		InstalledElements = {"dustcover_none_asvalreal", "raileddustcover_asvalreal"},
 		InstallSound = "Generic_Sight_LargeAttach",
 		UninstallSound = "Generic_Sight_LargeDetach",

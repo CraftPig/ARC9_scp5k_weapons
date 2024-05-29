@@ -197,19 +197,26 @@ SWEP.RecoilPerShot = 1
 
 ---- Weapon Visual Recoil
 SWEP.UseVisualRecoil = true
+SWEP.PhysicalVisualRecoil = false -- Visual recoil actually affects your aim point.
+SWEP.VisualRecoil = 0.01
 
-SWEP.VisualRecoil = 0.25
-SWEP.VisualRecoilMultSights = 0.1
-SWEP.VisualRecoilPositionBump = 1.5
-SWEP.VisualRecoilPositionBumpUp = 0.08 -- its a mult
+SWEP.VisualRecoilCenter = Vector(0, -5, 20) -- The "axis" of visual recoil. Where your hand is.
 
-SWEP.VisualRecoilUp = 0 -- Vertical tilt for visual recoil.F
-SWEP.VisualRecoilSide = 0 -- Horizontal tilt for visual recoil.
-SWEP.VisualRecoilRoll = 0 -- Roll tilt for visual recoil.
+SWEP.VisualRecoilUp = 100.0 -- Vertical tilt for visual recoil.F
+SWEP.VisualRecoilUpAddSighted = -100.0
+SWEP.VisualRecoilSide = 2 -- Horizontal tilt for visual recoil.
+SWEP.VisualRecoilRoll = 300.0 -- Roll tilt for visual recoil.
+
+SWEP.VisualRecoilPunch = 150 -- How far back visual recoil moves the gun.
+SWEP.VisualRecoilPunchMultSights = 2.55
+
+SWEP.VisualRecoilDampingConst = 80 -- How spring will be visual recoil, 120 is default
+SWEP.VisualRecoilSpringMagnitude = 5
+SWEP.VisualRecoilSpringPunchDamping = 5 -- ehh another val for "eft" recoil, 6 is default
 
 --------------------------
 ---- Weapon Handling Stuff
-SWEP.BarrelLength = 0 -- Distance for nearwalling
+SWEP.BarrelLength = 15 -- Distance for nearwalling
 SWEP.PushBackForce = 0 -- Push the player back when shooting.
 SWEP.FreeAimRadius = 10 -- In degrees, how much this gun can free aim in hip fire.
 SWEP.Sway = 0.25 -- How much the gun sways.
@@ -298,12 +305,12 @@ SWEP.CamOffsetAng = Angle(0, 0, 0)
 
 -------------
 --- Bob stuff
-SWEP.BobSprintMult = 0.1 -- 
-SWEP.BobWalkMult = 0.5 -- same but for all non sprint actions
+SWEP.BobSprintMult = 0.35 -- 
+SWEP.BobWalkMult = 1 -- same but for all non sprint actions
 
 -----------------------
 ---- Viewmodel Position
-SWEP.ViewModelFOVBase = 85
+SWEP.ViewModelFOVBase = 90
 
 SWEP.IronSights = {
     Pos = Vector(-2.8, -2.0, 2.65),
@@ -318,7 +325,7 @@ SWEP.SightMidPoint = { -- Where the gun should be at the middle of it's irons
     Ang = Angle(0, 0, -45),
 }
 
-SWEP.ActivePos = Vector(-3.1, -5.5, 0.25)
+SWEP.ActivePos = Vector(-3.5, -6, 0.0)
 SWEP.ActiveAng = Angle(-1, 1, -9)
 
 SWEP.MovingPos =  Vector(0, -0.5, 0)
@@ -335,8 +342,10 @@ SWEP.CrouchAng = Angle(-0, -1, -10)
 SWEP.RestPos = Vector(0.532, -6, 0)
 SWEP.RestAng = Angle(-4.633, 36.881, 0)
 
-SWEP.SprintPos = Vector(-0, -6, 5)
-SWEP.SprintAng = Angle(20, -20, -10)
+SWEP.SprintPos = Vector(-3.75, -7, 1.0)
+SWEP.SprintAng = Angle(10, -10, -30)
+-- SWEP.SprintPos = Vector(-0, -6, 5)
+-- SWEP.SprintAng = Angle(20, -20, -10)
 SWEP.SprintVerticalOffset = false -- Moves vm when looking up/down while sprinting (set to false if gun clips into camera)
 SWEP.ReloadNoSprintPos = true -- No sprintpos during reloads
 
@@ -345,8 +354,8 @@ SWEP.SprintMidPoint = {
     Ang = Angle(0, 5, -25)
 }
 
-SWEP.NearWallPos = Vector(-2.8, -7, 0.5)
-SWEP.NearWallAng = Angle(-1, -5, -12)
+SWEP.NearWallPos = Vector(-0, -7, 3.0)
+SWEP.NearWallAng = Angle(20, -10, -10) 
 
 SWEP.CustomizeAng = Angle(90, 0, 0)
 SWEP.CustomizePos = Vector(16.5, 30, 5)
@@ -411,7 +420,7 @@ SWEP.Attachments = {
     {
         PrintName = "Muzzle",
         DefaultAttName = "Standard Muzzle",
-        Category = {"muzzle","muzzle_pistols"},
+        Category = {"muzzle","muzzle_pistols", "scp5k_muzzle_pistol"},
         Bone = "slide",
         Pos = Vector(-0.0, -6.4, -0.2),
         Ang = Angle(0, 90, -0),
@@ -436,7 +445,7 @@ SWEP.Attachments = {
         Bone = "Slide",
         Pos = Vector(0, 0.5, 0.35),
         Ang = Angle(0, 90, -0),
-        Category = {"csgo_optics_pistols_alt","eft_optic_small"},
+        Category = {"csgo_optics_pistols_alt", "scp5k_optic_pistol", "eft_optic_small"},
         CorrectiveAng = Angle(-0.0, 0.0, 0),
 		InstallSound = "Generic_Sight_SmallAttach",
 		UninstallSound = "Generic_Sight_SmallDetach",

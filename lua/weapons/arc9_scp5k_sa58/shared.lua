@@ -190,7 +190,7 @@ SWEP.SpreadAddRecoil = 0.005 -- Applied per unit of recoil.
 
 --------------------------
 ---- Weapon Recoil
-SWEP.Recoil = 0.4 -- General recoil multiplier
+SWEP.Recoil = 0.5 -- General recoil multiplier
 SWEP.RecoilAddSighted = -0.2
 SWEP.RecoilAutoControl = 0.0 -- Multiplier for automatic recoil control.
 
@@ -228,7 +228,7 @@ SWEP.RecoilKickAffectPitch = nil -- thing for eft, set to true if you want camer
 
 --------------------------
 ---- Weapon Handling Stuff
-SWEP.BarrelLength = 0 -- Distance for nearwalling
+SWEP.BarrelLength = 35 -- Distance for nearwalling
 SWEP.PushBackForce = 0 -- Push the player back when shooting.
 SWEP.FreeAimRadius = 10 -- In degrees, how much this gun can free aim in hip fire.
 SWEP.Sway = 0.25 -- How much the gun sways.
@@ -317,7 +317,7 @@ SWEP.CamOffsetAng = Angle(0, 0, 0)
 
 -------------
 --- Bob stuff
-SWEP.BobSprintMult = 0.1 -- 
+SWEP.BobSprintMult = 0.35 -- 
 SWEP.BobWalkMult = 0.5 -- same but for all non sprint actions
 
 -----------------------
@@ -325,7 +325,7 @@ SWEP.BobWalkMult = 0.5 -- same but for all non sprint actions
 SWEP.ViewModelFOVBase = 80
 
 SWEP.IronSights = {
-    Pos = Vector(-1.64, 0.0, 1.75),
+    Pos = Vector(-1.64, -1.5, 1.75),
     Ang = Angle(-0.1, 0.3, 0),
     Magnification = 1.1,
     CrosshairInSights = false,
@@ -337,8 +337,8 @@ SWEP.SightMidPoint = { -- Where the gun should be at the middle of it's irons
     Ang = Angle(0, 0, -45),
 }
 
-SWEP.ActivePos = Vector(-0.0, -0.25, 0.75)
-SWEP.ActiveAng = Angle(-0.0, 1, -0)
+SWEP.ActivePos = Vector(0.25, -0.0, 1)
+SWEP.ActiveAng = Angle(-0.0, 0, -0)
 
 SWEP.MovingPos =  Vector(0, -0.5, 0)
 SWEP.MovingAng =  Angle(0, 0, 2)
@@ -351,8 +351,8 @@ SWEP.MovingMidPoint = {
 SWEP.CrouchPos = Vector(-1.0, -0.5, 0.0)
 SWEP.CrouchAng = Angle(-1, -1, -10)
 
-SWEP.SprintPos = Vector(-0, 0, 1)
-SWEP.SprintAng = Angle(25, -15, -10)
+SWEP.SprintPos = Vector(-0, -1.5, -1.0)
+SWEP.SprintAng = Angle(35, -0, -30)
 SWEP.SprintVerticalOffset = false -- Moves vm when looking up/down while sprinting (set to false if gun clips into camera)
 SWEP.ReloadNoSprintPos = true -- No sprintpos during reloads
 
@@ -361,8 +361,8 @@ SWEP.SprintMidPoint = {
     Ang = Angle(0, 5, -25)
 }
 
-SWEP.NearWallPos = Vector(-0, -2, 0.0)
-SWEP.NearWallAng = Angle(-1, -5, -12)
+SWEP.NearWallPos = Vector(-0, -0, 0.0)
+SWEP.NearWallAng = Angle(20, -10, -10)
 
 SWEP.CustomizeAng = Angle(90, 0, 0)
 SWEP.CustomizePos = Vector(11.2, 36, 8.75)
@@ -471,7 +471,7 @@ SWEP.Attachments = {
     {
         PrintName = "Muzzle",
         DefaultAttName = "Standard Muzzle",
-        Category = {"muzzle","muzzle_m4","muzzle_snipers"},
+        Category = {"muzzle","muzzle_m4","muzzle_snipers", "scp5k_muzzle"},
 		InstalledElements = {"muzzle_none_sa58"},
 		UnInstalledElements = {"muzzle_sa58"},
 		InstallSound = "Generic_Barrel_LargeAttach",
@@ -484,7 +484,7 @@ SWEP.Attachments = {
 	{
         PrintName = "Grip",
         DefaultAttName = "Default",
-        Category = {"grip","grip_mk18","grip_m4","fas_ubgl"},
+        Category = {"grip","grip_mk18","grip_m4","fas_ubgl", "scp5k_foregrip"},
 		InstalledElements = {"gripthingy_sa58"},
 		UnInstalledElements = {"gripthingy_none_sa58"},
 		InstallSound = "Generic_Grip_LargeAttach",
@@ -498,7 +498,7 @@ SWEP.Attachments = {
         Bone = "weapon",
         Pos = Vector(-0, -2, 2.4),
         Ang = Angle(0, 90, -0),
-        Category = {"csgo_optic"},
+        Category = {"csgo_optic", "scp5k_optic", "eft_optic_medium", "eft_optic_large"},
 		InstalledElements = {"handguard_none_sa58"},
 		UnInstalledElements = {"handguard_sa58"},
 		InstallSound = "Generic_Sight_LargeAttach",
@@ -623,6 +623,16 @@ SWEP.Animations = {
 		EventTable = {
         },
     }, ]]
+	["ready"] = {
+        Source = {"ready"},
+        MinProgress = 0.5,
+        FireASAP = true,
+		EventTable = {
+            {s = "Generic_ADSinMetal", t = 0 / 30},
+            -- {s = "Generic_ClothEquip", t = 0 / 30},
+			{s = "WeaponARC9_SA58_BoltForward", t = 17 / 30},
+        },
+    },
     ["draw"] = {
         Source = {"equip"},
         MinProgress = 0.5,
@@ -668,7 +678,7 @@ SWEP.Animations = {
 		EventTable = {
 		    {s = "WeaponARC9_SA58_Start", t = 10 / 30},
             {s = "WeaponARC9_SA58_MagPouchDown", t = 0 / 30},
-		    {s = "WeaponARC9_SA58_MagOut", t = 20 / 30},
+		    {s = "WeaponARC9_SA58_MagOut", t = 21 / 30},
 			{s = "WeaponARC9_SA58_MagIn", t = 39 / 30},
             {s = "WeaponARC9_SA58_MagPouchUp", t = 48 / 30},
 		    --{s = "WeaponARC9_MK17_HandlingBarrel", t = 75 / 30},
@@ -685,12 +695,12 @@ SWEP.Animations = {
                 rhik = 0
             },
             {
-                t = 0.61,
+                t = 0.7,
                 lhik = 0,
                 rhik = 0
             },
             {
-                t = 0.8,
+                t = 0.9,
                 lhik = 1,
                 rhik = 1
             },
@@ -785,12 +795,12 @@ SWEP.Animations = {
                 rhik = 0
             },
             {
-                t = 0.62,
+                t = 0.7,
                 lhik = 0,
                 rhik = 0
             },
             {
-                t = 0.8,
+                t = 0.9,
                 lhik = 1,
                 rhik = 1
             },
@@ -817,12 +827,12 @@ SWEP.Animations = {
                 rhik = 0
             },
             {
-                t = 0.62,
+                t = 0.7,
                 lhik = 0,
                 rhik = 0
             },
             {
-                t = 0.8,
+                t = 0.9,
                 lhik = 1,
                 rhik = 1
             },

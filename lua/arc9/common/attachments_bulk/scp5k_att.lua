@@ -206,3 +206,94 @@ ATT.ActivateElements = {"mag_ext_lamg"}
 
 ARC9.LoadAttachment(ATT, "scp5k_att_magextlamg")
 -------------------------------------------------------
+
+ATT = {}
+
+ATT.MenuCategory = "ARC9 - SCP: 5K Attachments"
+ATT.PrintName = [[Short Barrel]]
+ATT.CompactName = [[Short]]
+ATT.Description = [[]]
+ATT.Icon = Material("entities/att/att_temp.png", "mips smooth")
+
+ATT.Category = {"scp5k_sw500"}
+ATT.CustomPros = {
+    Length = "Removed", 
+}
+ATT.SortOrder = 2
+ATT.Free = false
+
+ATT.MuzzleEffectQCA = 2
+
+ATT.ReloadTimeMult = 0.9
+ATT.RecoilUp = 35  -- Multiplier for vertical recoil
+ATT.RecoilRandomSide = 45
+ATT.BarrelLength = 0
+
+ATT.ActivateElements = {"shortbarrel_sw500"}
+
+ARC9.LoadAttachment(ATT, "scp5k_att_sw500short")
+-------------------------------------------------------
+
+ATT = {}
+
+ATT.MenuCategory = "ARC9 - SCP: 5K Attachments"
+ATT.PrintName = [[Speed Loader]]
+ATT.CompactName = [[Speed Loader]]
+ATT.Description = [[]]
+ATT.Icon = Material("entities/att/att_temp.png", "mips smooth")
+
+ATT.Category = {"scp5k_sw500_speedloader"}
+ATT.SortOrder = 2
+ATT.Free = false
+
+ATT.Hook_TranslateAnimation = function(wep, anim)
+    return anim .. "_speedloader"
+end
+
+
+ARC9.LoadAttachment(ATT, "scp5k_att_sw500speedloader")
+-------------------------------------------------------
+
+ATT = {}
+
+ATT.MenuCategory = "ARC9 - SCP: 5K Attachments"
+ATT.PrintName = [[35 Round 7.62x39mm SG762 Mag]]
+ATT.CompactName = [[35-Round]]
+ATT.Description = [[]]
+ATT.Icon = Material("entities/att/att_temp.png", "mips smooth")
+
+ATT.Category = {"scp5k_sg762mag"}
+ATT.Pros = {}
+ATT.Cons = {}
+ATT.SortOrder = 2
+ATT.Free = false
+
+ATT.ClipSizeOverride = 35
+ATT.ReloadTimeMult = 1.10
+
+ATT.ActivateElements = {"mag_35_sig556"}
+
+ARC9.LoadAttachment(ATT, "scp5k_att_sg762_35mag")
+------------------------------------------------------------------
+
+ATT = {}
+
+ATT.MenuCategory = "ARC9 - SCP: 5K Attachments"
+ATT.PrintName = [[25 Round 7.62x39mm SG762 Mag]]
+ATT.CompactName = [[25-Round]]
+ATT.Description = [[]]
+ATT.Icon = Material("entities/att/att_temp.png", "mips smooth")
+
+ATT.Category = {"scp5k_sg762mag"}
+ATT.Pros = {}
+ATT.Cons = {}
+ATT.SortOrder = 2
+ATT.Free = false
+
+ATT.ClipSizeOverride = 25
+ATT.ReloadTimeMult = 0.9
+
+ATT.ActivateElements = {"mag_25_sig556"}
+
+ARC9.LoadAttachment(ATT, "scp5k_att_sg762_25mag")
+------------------------------------------------------------------

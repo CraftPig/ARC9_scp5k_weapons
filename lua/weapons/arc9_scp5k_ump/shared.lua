@@ -230,7 +230,7 @@ SWEP.RecoilKickAffectPitch = nil -- thing for eft, set to true if you want camer
 
 --------------------------
 ---- Weapon Handling Stuff
-SWEP.BarrelLength = 0 -- Distance for nearwalling
+SWEP.BarrelLength = 25 -- Distance for nearwalling
 SWEP.PushBackForce = 0 -- Push the player back when shooting.
 SWEP.FreeAimRadius = 10 -- In degrees, how much this gun can free aim in hip fire.
 SWEP.Sway = 0.25 -- How much the gun sways.
@@ -319,7 +319,7 @@ SWEP.CamOffsetAng = Angle(0, 0, 0)
 
 -------------
 --- Bob stuff
-SWEP.BobSprintMult = 0.1 -- 
+SWEP.BobSprintMult = 0.35 -- 
 SWEP.BobWalkMult = 0.5 -- same but for all non sprint actions
 
 -----------------------
@@ -339,7 +339,7 @@ SWEP.SightMidPoint = { -- Where the gun should be at the middle of it's irons
     Ang = Angle(0, 0, -45),
 }
 
-SWEP.ActivePos = Vector(-1.0, -0, 1.2)
+SWEP.ActivePos = Vector(-0.75, -0.25, 1.0)
 SWEP.ActiveAng = Angle(-0.0, 1, -0)
 
 SWEP.MovingPos =  Vector(0, -0.5, 0)
@@ -353,8 +353,10 @@ SWEP.MovingMidPoint = {
 SWEP.CrouchPos = Vector(-1.0, -0.5, -0.5)
 SWEP.CrouchAng = Angle(-1, -1, -10)
 
-SWEP.SprintPos = Vector(-1, -1, 1.5)
-SWEP.SprintAng = Angle(35, -15, -20)
+-- SWEP.SprintPos = Vector(-1, -1, 1.5)
+-- SWEP.SprintAng = Angle(35, -15, -20)
+SWEP.SprintPos = Vector(1, -0.5, -0.75)
+SWEP.SprintAng = Angle(40, -0, -40)
 SWEP.SprintVerticalOffset = false -- Moves vm when looking up/down while sprinting (set to false if gun clips into camera)
 SWEP.ReloadNoSprintPos = true -- No sprintpos during reloads
 
@@ -363,8 +365,8 @@ SWEP.SprintMidPoint = {
     Ang = Angle(0, 5, -25)
 }
 
-SWEP.NearWallPos = Vector(-0, -2, 0.0)
-SWEP.NearWallAng = Angle(-1, -5, -12)
+SWEP.NearWallPos = Vector(-0, -0, 0.0)
+SWEP.NearWallAng = Angle(20, -10, -10)
 
 SWEP.CustomizeAng = Angle(90, 0, 0)
 SWEP.CustomizePos = Vector(11.2, 36, 8.75)
@@ -436,7 +438,7 @@ SWEP.Attachments = {
     {
         PrintName = "Muzzle",
         DefaultAttName = "Standard Muzzle",
-        Category = {"muzzle"},
+        Category = {"muzzle", "scp5k_muzzle"},
 		InstalledElements = {"muzzle_none_mp7"},
 		UnInstalledElements = {"muzzle_mp7"},
 		InstallSound = "Generic_Barrel_LargeAttach",
@@ -451,7 +453,7 @@ SWEP.Attachments = {
         Bone = "weapon",
         Pos = Vector(0, -1.1, 3),
         Ang = Angle(0, 90, 0),
-        Category = {"csgo_optic", "go_optic_mp7"},
+        Category = {"csgo_optic", "go_optic_mp7", "scp5k_optic", "eft_optic_medium", "eft_optic_large"},
 		InstalledElements = {"sights_down_mp7"},
 		UnInstalledElements = {"sights_up_mp7"},
 		InstallSound = "Generic_Sight_LargeAttach",

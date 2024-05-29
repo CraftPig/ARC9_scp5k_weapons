@@ -190,7 +190,7 @@ SWEP.SpreadAddRecoil = 0.002 -- Applied per unit of recoil.
 
 --------------------------
 ---- Weapon Recoil
-SWEP.Recoil = 0.4 -- General recoil multiplier
+SWEP.Recoil = 0.6 -- General recoil multiplier
 SWEP.RecoilAddSighted = -0.2
 SWEP.RecoilAutoControl = 0.0 -- Multiplier for automatic recoil control.
 
@@ -228,7 +228,7 @@ SWEP.RecoilKickAffectPitch = nil -- thing for eft, set to true if you want camer
 
 --------------------------
 ---- Weapon Handling Stuff
-SWEP.BarrelLength = 0 -- Distance for nearwalling
+SWEP.BarrelLength = 20 -- Distance for nearwalling
 SWEP.PushBackForce = 0 -- Push the player back when shooting.
 SWEP.FreeAimRadius = 10 -- In degrees, how much this gun can free aim in hip fire.
 SWEP.Sway = 0.25 -- How much the gun sways.
@@ -317,12 +317,12 @@ SWEP.CamOffsetAng = Angle(0, 0, 0)
 
 -------------
 --- Bob stuff
-SWEP.BobSprintMult = 0.1 -- 
+SWEP.BobSprintMult = 0.35 -- 
 SWEP.BobWalkMult = 0.5 -- same but for all non sprint actions
 
 -----------------------
 ---- Viewmodel Position
-SWEP.ViewModelFOVBase = 75
+SWEP.ViewModelFOVBase = 80
 
 SWEP.IronSights = {
     Pos = Vector(-2.85, 0.7, 1.7),
@@ -337,7 +337,7 @@ SWEP.SightMidPoint = { -- Where the gun should be at the middle of it's irons
     Ang = Angle(0, 0, -45),
 }
 
-SWEP.ActivePos = Vector(-1.0, 0.5, 0.75)
+SWEP.ActivePos = Vector(-0.5, -0.0, 0.5)
 SWEP.ActiveAng = Angle(-0.0, 1, -0)
 
 SWEP.MovingPos =  Vector(0, -0.5, 0)
@@ -351,8 +351,10 @@ SWEP.MovingMidPoint = {
 SWEP.CrouchPos = Vector(-1.0, -0.5, 0.0)
 SWEP.CrouchAng = Angle(-1, -1, -10)
 
-SWEP.SprintPos = Vector(-1.5, 1, 0)
-SWEP.SprintAng = Angle(25, -15, -10)
+-- SWEP.SprintPos = Vector(-1.5, 1, 0)
+-- SWEP.SprintAng = Angle(25, -15, -10)
+SWEP.SprintPos = Vector(-2, -2.5, -1.0)
+SWEP.SprintAng = Angle(35, -0, -40)
 SWEP.SprintVerticalOffset = false -- Moves vm when looking up/down while sprinting (set to false if gun clips into camera)
 SWEP.ReloadNoSprintPos = true -- No sprintpos during reloads
 
@@ -361,8 +363,8 @@ SWEP.SprintMidPoint = {
     Ang = Angle(0, 5, -25)
 }
 
-SWEP.NearWallPos = Vector(-0, -2, 0.0)
-SWEP.NearWallAng = Angle(-1, -5, -12)
+SWEP.NearWallPos = Vector(-0, -0, 0.0)
+SWEP.NearWallAng = Angle(20, -10, -10)
 
 SWEP.CustomizeAng = Angle(90, 0, 0)
 SWEP.CustomizePos = Vector(11.2, 36, 8.75)
@@ -439,7 +441,7 @@ SWEP.Attachments = {
     {
         PrintName = "Muzzle",
         DefaultAttName = "Standard Muzzle",
-        Category = {"muzzle"},
+        Category = {"muzzle", "scp5k_muzzle"},
 		InstallSound = "Generic_Barrel_LargeAttach",
 		UninstallSound = "Generic_Barrel_LargeDetach",
         Bone = "weapon",
@@ -452,7 +454,7 @@ SWEP.Attachments = {
         Bone = "weapon",
         Pos = Vector(-0, -1.8, 3.2),
         Ang = Angle(0, 90, -0),
-        Category = {"csgo_optic"},
+        Category = {"csgo_optic", "scp5k_optic", "eft_optic_medium", "eft_optic_large"},
 		InstalledElements = {"rail_mp5"},
 		UnInstalledElements = {"rail_none_mp5"},
 		InstallSound = "Generic_Sight_LargeAttach",

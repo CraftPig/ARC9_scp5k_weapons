@@ -206,18 +206,22 @@ SWEP.RecoilPerShot = 1
 
 ---- Weapon Visual Recoil
 SWEP.UseVisualRecoil = true
+SWEP.PhysicalVisualRecoil = false -- Visual recoil actually affects your aim point.
+SWEP.VisualRecoil = 0.01
 
-SWEP.VisualRecoil = 0.25
-SWEP.VisualRecoilMultSights = 0.1
-SWEP.VisualRecoilPositionBump = 2.5
-SWEP.VisualRecoilPositionBumpUp = 0.08 -- its a mult
+SWEP.VisualRecoilCenter = Vector(0, -5, 20) -- The "axis" of visual recoil. Where your hand is.
 
-SWEP.VisualRecoilPunch = 1.5 -- How far back visual recoil moves the gun.
-SWEP.VisualRecoilPunchMultSights = 30
+SWEP.VisualRecoilUp = 100.0 -- Vertical tilt for visual recoil.F
+SWEP.VisualRecoilUpAddSighted = -100.0
+SWEP.VisualRecoilSide = 2 -- Horizontal tilt for visual recoil.
+SWEP.VisualRecoilRoll = 300.0 -- Roll tilt for visual recoil.
 
-SWEP.VisualRecoilUp = 0 -- Vertical tilt for visual recoil.F
-SWEP.VisualRecoilSide = 0 -- Horizontal tilt for visual recoil.
-SWEP.VisualRecoilRoll = 0 -- Roll tilt for visual recoil.
+SWEP.VisualRecoilPunch = 150 -- How far back visual recoil moves the gun.
+SWEP.VisualRecoilPunchMultSights = 10
+
+SWEP.VisualRecoilDampingConst = 80 -- How spring will be visual recoil, 120 is default
+SWEP.VisualRecoilSpringMagnitude = 5
+SWEP.VisualRecoilSpringPunchDamping = 5 -- ehh another val for "eft" recoil, 6 is default
 
 SWEP.RecoilKick = 1 -- Camera recoil
 SWEP.RecoilKickDamping = 70.151 -- Camera recoil damping
@@ -225,7 +229,7 @@ SWEP.RecoilKickAffectPitch = nil -- thing for eft, set to true if you want camer
 
 --------------------------
 ---- Weapon Handling Stuff
-SWEP.BarrelLength = 0 -- Distance for nearwalling
+SWEP.BarrelLength = 50 -- Distance for nearwalling
 SWEP.PushBackForce = 0 -- Push the player back when shooting.
 SWEP.FreeAimRadius = 10 -- In degrees, how much this gun can free aim in hip fire.
 SWEP.Sway = 0.25 -- How much the gun sways.
@@ -351,7 +355,7 @@ SWEP.CrouchPos = Vector(-1.0, -0.5, 0.0)
 SWEP.CrouchAng = Angle(-1, -1, -10)
 
 SWEP.SprintPos = Vector(3, 0, 1)
-SWEP.SprintAng = Angle(40, -15, -0)
+SWEP.SprintAng = Angle(40, -15, -15)
 SWEP.SprintVerticalOffset = false -- Moves vm when looking up/down while sprinting (set to false if gun clips into camera)
 SWEP.ReloadNoSprintPos = true -- No sprintpos during reloads
 
@@ -360,8 +364,8 @@ SWEP.SprintMidPoint = {
     Ang = Angle(0, 5, -25)
 }
 
-SWEP.NearWallPos = Vector(-0, -2, 0.0)
-SWEP.NearWallAng = Angle(-1, -5, -12)
+SWEP.NearWallPos = Vector(-0, -0, 0.0)
+SWEP.NearWallAng = Angle(20, -10, -10)
 
 SWEP.CustomizeAng = Angle(90, 0, 0)
 SWEP.CustomizePos = Vector(11.2, 36, 8.75)
@@ -472,7 +476,7 @@ SWEP.AttachmentElements = {
 SWEP.Attachments = {
     {
         PrintName = "Muzzle",
-        Category = {"muzzle","muzzle_m4"},
+        Category = {"muzzle","muzzle_m4", "scp5k_muzzle"},
 		InstalledElements = {"muzzle_none_lamg"},
 		InstallSound = "Generic_Barrel_LargeAttach",
 		UninstallSound = "Generic_Barrel_LargeDetach",
@@ -484,7 +488,7 @@ SWEP.Attachments = {
 	{
         PrintName = "Grip",
         DefaultAttName = "Default",
-        Category = {"grip","grip_mk18","grip_m4","fas_ubgl"},
+        Category = {"grip","grip_mk18","grip_m4","fas_ubgl", "scp5k_foregrip"},
 		InstallSound = "Generic_Grip_LargeAttach",
 		UninstallSound = "Generic_Grip_LargeDetach",
         Bone = "weapon",
@@ -497,7 +501,7 @@ SWEP.Attachments = {
         Bone = "weapon",
         Pos = Vector(-0, 4.8, 1),
         Ang = Angle(0, 90, -0),
-        Category = {"csgo_optic"},
+        Category = {"csgo_optic", "scp5k_optic", "eft_optic_medium", "eft_optic_large"},
 		InstalledElements = {"sights_none_lamg"},
 		InstallSound = "Generic_Sight_LargeAttach",
 		UninstallSound = "Generic_Sight_LargeDetach",
@@ -725,7 +729,7 @@ SWEP.Animations = {
                 rhik = 1
             },
             {
-                t = 0.1,
+                t = 0.05,
                 lhik = 0,
                 rhik = 0
             },

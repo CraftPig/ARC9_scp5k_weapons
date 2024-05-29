@@ -190,7 +190,7 @@ SWEP.SpreadAddRecoil = 0.00 -- Applied per unit of recoil.
 
 --------------------------
 ---- Weapon Recoil
-SWEP.Recoil = 0.4 -- General recoil multiplier
+SWEP.Recoil = 0.57 -- General recoil multiplier
 SWEP.RecoilAddSighted = -0.2
 SWEP.RecoilAutoControl = 0.0 -- Multiplier for automatic recoil control.
 
@@ -209,26 +209,26 @@ SWEP.RecoilPerShot = 1
 
 ---- Weapon Visual Recoil
 SWEP.UseVisualRecoil = true
+SWEP.PhysicalVisualRecoil = false -- Visual recoil actually affects your aim point.
+SWEP.VisualRecoil = 0.01
 
-SWEP.VisualRecoil = 0.25
-SWEP.VisualRecoilMultSights = 0.1
-SWEP.VisualRecoilPositionBump = 2.5
-SWEP.VisualRecoilPositionBumpUp = 0.08 -- its a mult
+SWEP.VisualRecoilCenter = Vector(0, -5, 20) -- The "axis" of visual recoil. Where your hand is.
 
-SWEP.VisualRecoilPunch = 1.5 -- How far back visual recoil moves the gun.
-SWEP.VisualRecoilPunchMultSights = 30
+SWEP.VisualRecoilUp = 200.0 -- Vertical tilt for visual recoil.F
+SWEP.VisualRecoilUpAddSighted = -300.0
+SWEP.VisualRecoilSide = 2 -- Horizontal tilt for visual recoil.
+SWEP.VisualRecoilRoll = 300.0 -- Roll tilt for visual recoil.
 
-SWEP.VisualRecoilUp = 0 -- Vertical tilt for visual recoil.F
-SWEP.VisualRecoilSide = 0 -- Horizontal tilt for visual recoil.
-SWEP.VisualRecoilRoll = 0 -- Roll tilt for visual recoil.
+SWEP.VisualRecoilPunch = 150 -- How far back visual recoil moves the gun.
+SWEP.VisualRecoilPunchMultSights = 2.55
 
-SWEP.RecoilKick = 1 -- Camera recoil
-SWEP.RecoilKickDamping = 70.151 -- Camera recoil damping
-SWEP.RecoilKickAffectPitch = nil -- thing for eft, set to true if you want camera go up (only visually) as recoil increases, SWEP.Recoil * SWEP.RecoilKick = effect of this
+SWEP.VisualRecoilDampingConst = 80 -- How spring will be visual recoil, 120 is default
+SWEP.VisualRecoilSpringMagnitude = 5
+SWEP.VisualRecoilSpringPunchDamping = 5 -- ehh another val for "eft" recoil, 6 is default
 
 --------------------------
 ---- Weapon Handling Stuff
-SWEP.BarrelLength = 0 -- Distance for nearwalling
+SWEP.BarrelLength = 30 -- Distance for nearwalling
 SWEP.PushBackForce = 0 -- Push the player back when shooting.
 SWEP.FreeAimRadius = 10 -- In degrees, how much this gun can free aim in hip fire.
 SWEP.Sway = 0.25 -- How much the gun sways.
@@ -317,7 +317,7 @@ SWEP.CamOffsetAng = Angle(0, 0, 0)
 
 -------------
 --- Bob stuff
-SWEP.BobSprintMult = 0.1 -- 
+SWEP.BobSprintMult = 0.35 -- 
 SWEP.BobWalkMult = 0.5 -- same but for all non sprint actions
 
 -----------------------
@@ -351,8 +351,10 @@ SWEP.MovingMidPoint = {
 SWEP.CrouchPos = Vector(-1.0, -0.5, 0.0)
 SWEP.CrouchAng = Angle(-1, -1, -10)
 
-SWEP.SprintPos = Vector(-1.5, 1, 0)
-SWEP.SprintAng = Angle(25, -15, -10)
+-- SWEP.SprintPos = Vector(-1.5, 1, 0)
+-- SWEP.SprintAng = Angle(25, -15, -10)
+SWEP.SprintPos = Vector(-2, -2.5, -1.0)
+SWEP.SprintAng = Angle(35, -0, -40)
 SWEP.SprintVerticalOffset = false -- Moves vm when looking up/down while sprinting (set to false if gun clips into camera)
 SWEP.ReloadNoSprintPos = true -- No sprintpos during reloads
 
@@ -361,8 +363,8 @@ SWEP.SprintMidPoint = {
     Ang = Angle(0, 5, -25)
 }
 
-SWEP.NearWallPos = Vector(-0, -2, 0.0)
-SWEP.NearWallAng = Angle(-1, -5, -12)
+SWEP.NearWallPos = Vector(-0, -0, 0.0)
+SWEP.NearWallAng = Angle(20, -10, -10)
 
 SWEP.CustomizeAng = Angle(90, 0, 0)
 SWEP.CustomizePos = Vector(11.2, 36, 8.75)
@@ -441,7 +443,7 @@ SWEP.Attachments = {
         Bone = "weapon",
         Pos = Vector(-0, -1.8, 3.2),
         Ang = Angle(0, 90, -0),
-        Category = {"csgo_optic"},
+        Category = {"csgo_optic", "scp5k_optic", "eft_optic_medium", "eft_optic_large"},
 		InstalledElements = {"rail_mp5"},
 		UnInstalledElements = {"rail_none_mp5"},
 		InstallSound = "Generic_Sight_LargeAttach",
@@ -536,11 +538,37 @@ SWEP.Animations = {
         },
     },
     --------------------------------------------------- Draw & Holster
-    --[[ ["ready"] = {
-        Source = {"nil"},
+    ["ready"] = {
+        Source = {"ready"},
+        MinProgress = 0.8,
+        FireASAP = true,
 		EventTable = {
+			{s = "WeaponARC9_MP5_BoltBack", t = 0 / 30},
+			{s = "WeaponARC9_MP5_BoltForward", t = 7 / 30},
         },
-    }, ]]
+		IKTimeLine = {
+            {
+                t = 0,
+                lhik = 1,
+                rhik = 1
+            },
+            {
+                t = 0.1,
+                lhik = 0,
+                rhik = 0
+            },
+            {
+                t = 0.61,
+                lhik = 0,
+                rhik = 0
+            },
+            {
+                t = 1,
+                lhik = 1,
+                rhik = 1
+            },
+        },
+    },
     ["draw"] = {
         Source = {"equip"},
         MinProgress = 0.5,
@@ -637,7 +665,7 @@ SWEP.Animations = {
 		EventTable = {
             {s = "WeaponARC9_MP5_Rotate", t = 0 / 30},
 			{s = "WeaponARC9_MP5_BoltBack", t = 64 / 30},
-			{s = "WeaponARC9_MP5_BoltForward", t = 87 / 30},
+			{s = "WeaponARC9_MP5_BoltForward", t = 90 / 30},
             {s = "Generic_ClothEquip", t = 100 / 30},
         },
 		IKTimeLine = {
