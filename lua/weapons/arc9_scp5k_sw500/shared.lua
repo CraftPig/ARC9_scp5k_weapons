@@ -627,10 +627,10 @@ SWEP.Animations = {
 SWEP.Hook_ModifyBodygroups = function(self, data)
     local mdl = data.model
 
-    local clip1 = self:GetLoadedRounds()
-    clip1 = math.min(clip1, 5)
+    --local clip1 = self:GetLoadedRounds()
+    --clip1 = math.min(clip1, 6)
 
-    mdl:SetBodygroup(3, clip1)
+    --mdl:SetBodygroup(3, clip1)
 
     local rounds1 = self:GetLastLoadedRounds()
     rounds1 = math.min(rounds1, 5)
