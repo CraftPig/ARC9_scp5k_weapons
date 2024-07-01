@@ -6,13 +6,14 @@
     "$bumpmap" "models\weapons\arc9_scp5k\casing\Bullets_n"
     "$phongexponenttexture" "models\weapons\arc9_scp5k\casing\Bullets_e"
 
-    "$color2" "[0.8 0.8 0.8]"
-    "$blendtintbybasealpha" "1"
+    "$color2" "[.22 .22 .22]"
+    "$blendtintbybasealpha" "0"
 
     "$phong" "1"
     "$phongboost" "1"
-    "$phongfresnelranges" "[1 0.5 0]"
-    "$phongalbedotint" "0"
+    "$phongfresnelranges" "[1 0.1 0]"
+    "$phongalbedotint" "1"
+    "$phongalbedoboost" "10"
 
     //rimlight doesn't properly show in hlmv, make sure you're changing these values in game
     "$rimlight" "1"
@@ -28,7 +29,7 @@
     //remove this if viewing outside of MWB
     "Proxies"
     {
-        "MwEnvMapTint"
+        "Arc9EnvMapTint"
         {
             "specularity" "0.5"             //0.25, 0.5, 0.75, 1
             "min" "0"

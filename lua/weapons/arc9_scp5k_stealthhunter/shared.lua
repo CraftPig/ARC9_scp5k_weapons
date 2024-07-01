@@ -51,7 +51,7 @@ SWEP.MirrorVMWM = true
  SWEP.WorldModelOffset = {
      Pos = Vector(-12, 4, -7), -- non tpik (while on ground, on npc etc)
      Ang = Angle(0, 0, 180),
-     TPIKPos = Vector(-9, 0, -5), -- arc9_tpik 1, you can make cool poses with it
+     TPIKPos = Vector(-12, 2, -4), -- arc9_tpik 1, you can make cool poses with it
      TPIKAng = Angle(0, -10, 180),
      Scale = 1
  }
@@ -62,7 +62,7 @@ SWEP.HoldType = "revolver"
 SWEP.HoldTypeSprint = "revolver"
 SWEP.HoldTypeHolstered = nil
 SWEP.HoldTypeSights = "revolver"
-SWEP.HoldTypeCustomize = "magic"
+SWEP.HoldTypeCustomize = "passive"
 SWEP.HoldTypeBlindfire = "revolver"
 SWEP.HoldTypeNPC = "revolver"
 
@@ -325,8 +325,8 @@ SWEP.SightMidPoint = { -- Where the gun should be at the middle of it's irons
     Ang = Angle(0, 0, -45),
 }
 
-SWEP.ActivePos = Vector(-1.7, -6.5, 2.25)
-SWEP.ActiveAng = Angle(-0, -0, -2)
+SWEP.ActivePos = Vector(-1.8, -3, 1.8)
+SWEP.ActiveAng = Angle(-0, 1, -5)
 
 SWEP.MovingPos =  Vector(0, -0.5, 0)
 SWEP.MovingAng =  Angle(0, 0, 2)
@@ -420,29 +420,29 @@ SWEP.Attachments = {
     {
         PrintName = "Muzzle",
         DefaultAttName = "Standard Muzzle",
-        Category = {"muzzle_pistols", "scp5k_muzzle_pistol"},
+        Category = {"muzzle_pistols", "scp5k_muzzle_pistol","cod2019_muzzle"},
         Bone = "weapon",
         Pos = Vector(-0.0, -8.26, 1.5),
         Ang = Angle(0, 90, -0),
-        Scale = 0.7,
+        Scale = 1,
     },
     {
         PrintName = "Sights",
         Bone = "weapon",
         Pos = Vector(0, -2.7, 1.9),
         Ang = Angle(0, 90, -0),
-        Category = {"csgo_optics_pistols_alt", "scp5k_optic_pistol", "eft_optic_small"},
+        Category = {"csgo_optics_pistols_alt", "scp5k_optic_pistol", "cod2019_optic"},
         CorrectiveAng = Angle(-0.0, 0.2, 0),
-		Scale = 0.7,
+		Scale = 1,
     },
     {
         PrintName = "Tactical",
         DefaultAttName = "Default",
-        Category = {"csgo_tac_pistols"},
+        Category = {"csgo_tac_pistols","cod2019_tac_pistols"},
         Bone = "weapon",
-        Pos = Vector(0, -2.5, 0.6),
+        Pos = Vector(0, -2.4, 0.6),
         Ang = Angle(0, 90, 0),
-		Scale = 0.7,
+		Scale = 0.9,
     },
     {
         PrintName = "Ammo",
@@ -459,13 +459,33 @@ SWEP.Attachments = {
     -- },
 	{
         PrintName = "View",
-        Category = {"scp5k_view"},
-        CosmeticOnly = false,
+        Category = {"scp5k_view_02"},
+        CosmeticOnly = true,
     },
     {
         PrintName = "Cosmetic",
         Category = {"universal_camo"},
         CosmeticOnly = true,
+    },
+	{ 
+        PrintName = "Charm",
+        CosmeticOnly = true,
+        Category = "charm",
+        Bone = "weapon",
+        Pos = Vector(-0.66, 4, -3.3),
+		Ang = Angle(-0, 90, -0),
+		Icon_Offset = Vector(-2.5, 0, 1.5),
+		Scale = 1,
+    },
+    { 
+        PrintName = "Stats",
+        Category = "killcounter",
+        Bone = "weapon",
+        Pos = Vector(-0.3, -0.2,-0.25),
+		Ang = Angle(-0, 90, 0),
+		Icon_Offset = Vector(-4.85, 0.05, 2.3),
+		CosmeticOnly = true,
+		Scale = 0.7,
     },
 }
 
@@ -634,9 +654,5 @@ SWEP.Hook_ModifyBodygroups = function(self, data)
     local bone = "Cylinder"
     local boneid = mdl:LookupBone(bone)
 
-    if !boneid then return end
 
-    local ang = 0 * (self:GetLastLoadedRounds() / 6)
-
-    mdl:ManipulateBoneAngles(boneid, Angle(-ang, 0, 0))
 end

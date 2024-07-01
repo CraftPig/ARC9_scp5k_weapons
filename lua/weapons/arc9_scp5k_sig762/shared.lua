@@ -50,8 +50,8 @@ SWEP.MirrorVMWM = true
  SWEP.WorldModelOffset = {
      Pos = Vector(-3, 4, -8), -- non tpik (while on ground, on npc etc)
      Ang = Angle(0, 0, 180),
-     TPIKPos = Vector(-7, 5, -5), -- arc9_tpik 1, you can make cool poses with it
-     TPIKAng = Angle(0, -10, 180),
+     TPIKPos = Vector(-5, 3, -6), -- arc9_tpik 1, you can make cool poses with it
+     TPIKAng = Angle(0, -10, 170),
      Scale = 1
  }
 
@@ -61,7 +61,7 @@ SWEP.HoldType = "ar2"
 SWEP.HoldTypeSprint = "ar2"
 SWEP.HoldTypeHolstered = nil
 SWEP.HoldTypeSights = "ar2"
-SWEP.HoldTypeCustomize = "magic"
+SWEP.HoldTypeCustomize = "passive"
 SWEP.HoldTypeBlindfire = "ar2"
 SWEP.HoldTypeNPC = "ar2"
 
@@ -470,7 +470,7 @@ SWEP.AttachmentElements = {
 SWEP.Attachments = {
     {
         PrintName = "Muzzle",
-        Category = {"muzzle","muzzle_m4","muzzle_snipers", "scp5k_muzzle"},
+        Category = {"muzzle","muzzle_m4","muzzle_snipers", "scp5k_muzzle","cod2019_muzzle"},
 		InstalledElements = {"muzzle_sig566_none"},
 		InstallSound = "Generic_Barrel_LargeAttach",
 		UninstallSound = "Generic_Barrel_LargeDetach",
@@ -482,7 +482,7 @@ SWEP.Attachments = {
 	{
         PrintName = "Grip",
         DefaultAttName = "Default",
-        Category = {"grip","grip_mk18","grip_m4","fas_ubgl", "scp5k_foregrip"},
+        Category = {"grip","grip_mk18","grip_m4","fas_ubgl", "scp5k_foregrip","cod2019_grip"},
 		InstalledElements = {"rail_sig556"},
 		InstallSound = "Generic_Grip_LargeAttach",
 		UninstallSound = "Generic_Grip_LargeDetach",
@@ -496,7 +496,7 @@ SWEP.Attachments = {
         Bone = "weapon",
         Pos = Vector(-0, -2.1, -1),
         Ang = Angle(-90, 0, -90),
-        Category = {"csgo_optic", "scp5k_optic", "eft_optic_medium", "eft_optic_large"},
+        Category = {"csgo_optic", "scp5k_optic", "cod2019_optic"},
 		InstalledElements = {"sights_sig556_down"},
 		InstallSound = "Generic_Sight_LargeAttach",
 		UninstallSound = "Generic_Sight_LargeDetach",
@@ -505,7 +505,7 @@ SWEP.Attachments = {
     },
     {
         PrintName = "Tactical",
-        Category = {"csgo_tac", "scp5k_tactical"},
+        Category = {"cod2019_tac","csgo_tac",  "scp5k_tactical"},
 		InstalledElements = {"rail_sig556"},
 		InstallSound = "Generic_Light_LargeDetach",
 		UninstallSound = "Generic_Light_SmallAttach",
@@ -528,7 +528,7 @@ SWEP.Attachments = {
     },
 	{
         PrintName = "Stock",
-        Category = {"csgo_tube"},
+        Category = {"csgo_tube","cod2019_tube"},
         Bone = "weapon",
         InstalledElements = {"stock_sig556_none"},
 		InstallSound = "Generic_Grip_LargeAttach",
@@ -555,6 +555,25 @@ SWEP.Attachments = {
         PrintName = "Cosmetic",
         Category = {"universal_camo"},
         CosmeticOnly = true,
+    },
+	    { 
+        PrintName = "Charm",
+        CosmeticOnly = true,
+        Category = "charm",
+        Bone = "weapon",
+        Pos = Vector(-0.6, -1, 2),
+		Ang = Angle(-90, 90, -0),
+		Icon_Offset = Vector(-2.5, 0, 1.5),
+		Scale = 1,
+    },
+    { 
+        PrintName = "Stats",
+        Category = "killcounter",
+        Bone = "weapon",
+        Pos = Vector(-0.5, -1.4,-1),
+		Ang = Angle(-90, 90, 15),
+		Icon_Offset = Vector(-4.85, 0.05, 2.3),
+		CosmeticOnly = true,
     },
 }
 

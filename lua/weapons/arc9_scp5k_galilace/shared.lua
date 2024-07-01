@@ -48,10 +48,10 @@ SWEP.UseHands = true
 SWEP.WorldModel = "models/weapons/w_pist_usp.mdl"
 SWEP.MirrorVMWM = true 
  SWEP.WorldModelOffset = {
-     Pos = Vector(-1, 3, -9), -- non tpik (while on ground, on npc etc)
+     Pos = Vector(-3, 4, -8), -- non tpik (while on ground, on npc etc)
      Ang = Angle(0, 0, 180),
-     TPIKPos = Vector(-6, 5, -5), -- arc9_tpik 1, you can make cool poses with it
-     TPIKAng = Angle(0, -10, 180),
+     TPIKPos = Vector(-5, 3, -6), -- arc9_tpik 1, you can make cool poses with it
+     TPIKAng = Angle(0, -10, 170),
      Scale = 1
  }
 
@@ -61,7 +61,7 @@ SWEP.HoldType = "ar2"
 SWEP.HoldTypeSprint = "ar2"
 SWEP.HoldTypeHolstered = nil
 SWEP.HoldTypeSights = "ar2"
-SWEP.HoldTypeCustomize = "magic"
+SWEP.HoldTypeCustomize = "passive"
 SWEP.HoldTypeBlindfire = "ar2"
 SWEP.HoldTypeNPC = "ar2"
 
@@ -318,7 +318,7 @@ SWEP.BobWalkMult = 0.5 -- same but for all non sprint actions
 SWEP.ViewModelFOVBase = 75
 
 SWEP.IronSights = {
-    Pos = Vector(-2.88, 0.7, 1.5),
+    Pos = Vector(-2.88, -2, 1.5),
     Ang = Angle(-0.55, 0.2, 0),
     Magnification = 1.1,
     CrosshairInSights = false,
@@ -330,8 +330,8 @@ SWEP.SightMidPoint = { -- Where the gun should be at the middle of it's irons
     Ang = Angle(0, 0, -45),
 }
 
-SWEP.ActivePos = Vector(-0.5, 0.75, 0.50)
-SWEP.ActiveAng = Angle(-0.0, 1, -1)
+SWEP.ActivePos = Vector(-0.5, 1, 0.10)
+SWEP.ActiveAng = Angle(-0.0, 4, -1)
 
 SWEP.MovingPos =  Vector(0, -0.5, 0)
 SWEP.MovingAng =  Angle(0, 0, 2)
@@ -496,7 +496,7 @@ SWEP.Attachments = {
     {
         PrintName = "Muzzle",
         DefaultAttName = "Standard Muzzle",
-        Category = {"muzzle","muzzle_m4","muzzle_snipers", "scp5k_muzzle"},
+        Category = {"muzzle","muzzle_m4","muzzle_snipers", "scp5k_muzzle","cod2019_muzzle"},
 		InstalledElements = {"muzzle_none_ace"},
 		UnInstalledElements = {"muzzle_ace"},
 		InstallSound = "Generic_Barrel_LargeAttach",
@@ -509,7 +509,7 @@ SWEP.Attachments = {
 	{
         PrintName = "Grip",
         DefaultAttName = "Default",
-        Category = {"grip","grip_mk18","grip_m4","fas_ubgl", "scp5k_foregrip"},
+        Category = {"grip","grip_mk18","grip_m4","fas_ubgl", "scp5k_foregrip","cod2019_grip"},
 		InstalledElements = {"grip_bottom_none_ace"},
 		UnInstalledElements = {"grip_bottom_ace"},
 		InstallSound = "Generic_Grip_LargeAttach",
@@ -524,7 +524,7 @@ SWEP.Attachments = {
         Bone = "weapon",
         Pos = Vector(-0, -3, 2),
         Ang = Angle(0, 90, -0),
-        Category = {"csgo_optic", "scp5k_optic", "eft_optic_medium", "eft_optic_large"},
+        Category = {"csgo_optic", "scp5k_optic", "cod2019_optic"},
 		InstalledElements = {"iron_folded_mk18"},
 		UnInstalledElements = {"iron_mk18"},
 		InstallSound = "Generic_Sight_LargeAttach",
@@ -535,7 +535,7 @@ SWEP.Attachments = {
     {
         PrintName = "Tactical",
         DefaultAttName = "Default",
-        Category = {"csgo_tac"},
+         Category = {"cod2019_tac","csgo_tac"},
 		InstalledElements = {"grip_side_none_ace"},
 		UnInstalledElements = {"grip_side_ace"},
 		InstallSound = "Generic_Light_LargeDetach",
@@ -560,7 +560,7 @@ SWEP.Attachments = {
     },
 	{
         PrintName = "Stock",
-        Category = {"csgo_stock"},
+        Category = {"csgo_stock","cod2019_stocks"},
         Bone = "weapon",
         InstalledElements = {"stock_none_ace"},
 		UnInstalledElements = {"stock_ace"},
@@ -588,6 +588,25 @@ SWEP.Attachments = {
         PrintName = "Cosmetic",
         Category = {"universal_camo", "scp5k_galilace_skin"},
         CosmeticOnly = true,
+    },
+	{ 
+        PrintName = "Charm",
+        CosmeticOnly = true,
+        Category = "charm",
+        Bone = "weapon",
+        Pos = Vector(-0.6, 2.6, 0.5),
+		Ang = Angle(-0, 90, -0),
+		Icon_Offset = Vector(-2.5, 0, 1.5),
+		Scale = 1,
+    },
+    { 
+        PrintName = "Stats",
+        Category = "killcounter",
+        Bone = "weapon",
+        Pos = Vector(-0.6, 2,-0.5),
+		Ang = Angle(-0, 90, -0),
+		Icon_Offset = Vector(-4.85, 0.05, 2.3),
+		CosmeticOnly = true,
     },
 }
 

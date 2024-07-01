@@ -48,12 +48,13 @@ SWEP.UseHands = true
 SWEP.WorldModel = "models/weapons/w_pist_usp.mdl"
 SWEP.MirrorVMWM = true 
  SWEP.WorldModelOffset = {
-     Pos = Vector(-1, 4, -5), -- non tpik (while on ground, on npc etc)
-     Ang = Angle(-15, 0, 180),
-     TPIKPos = Vector(-4, 6, -5), -- arc9_tpik 1, you can make cool poses with it
-     TPIKAng = Angle(0, -10, 180),
+     Pos = Vector(-3, 4, -8), -- non tpik (while on ground, on npc etc)
+     Ang = Angle(0, 0, 180),
+     TPIKPos = Vector(-5, 3, -6), -- arc9_tpik 1, you can make cool poses with it
+     TPIKAng = Angle(0, -10, 170),
      Scale = 1
  }
+
 
 ---------------
 ---- Hold Types
@@ -61,7 +62,7 @@ SWEP.HoldType = "ar2"
 SWEP.HoldTypeSprint = "ar2"
 SWEP.HoldTypeHolstered = nil
 SWEP.HoldTypeSights = "ar2"
-SWEP.HoldTypeCustomize = "magic"
+SWEP.HoldTypeCustomize = "passive"
 SWEP.HoldTypeBlindfire = "ar2"
 SWEP.HoldTypeNPC = "ar2"
 
@@ -339,8 +340,8 @@ SWEP.SightMidPoint = { -- Where the gun should be at the middle of it's irons
     Ang = Angle(0, 0, -45),
 }
 
-SWEP.ActivePos = Vector(-1.25, 1.0, 0.35)
-SWEP.ActiveAng = Angle(-0.0, 1, -5)
+SWEP.ActivePos = Vector(-1.4, 2.0, 0.35)
+SWEP.ActiveAng = Angle(-0.0, 3, -5)
 
 SWEP.MovingPos =  Vector(0, -0.5, 0)
 SWEP.MovingAng =  Angle(0, 0, 1)
@@ -448,7 +449,7 @@ SWEP.Attachments = {
     {
         PrintName = "Muzzle",
         DefaultAttName = "Standard Muzzle",
-        Category = {"muzzle_snipers", "scp5k_muzzle"},
+        Category = {"muzzle_snipers", "scp5k_muzzle","cod2019_muzzle"},
 		InstallSound = "Generic_Barrel_LargeAttach",
 		UninstallSound = "Generic_Barrel_LargeDetach",
         Bone = "weapon",
@@ -456,32 +457,42 @@ SWEP.Attachments = {
         Ang = Angle(0, 90, -180),
         Scale = 0.9,
     },
+		{
+        PrintName = "Grip",
+        DefaultAttName = "Default",
+        Category = {"grip","grip_mk18","grip_m4","fas_ubgl", "scp5k_foregrip","cod2019_grip"},
+		InstalledElements = {"gripthingy_sa58"},
+		UnInstalledElements = {"gripthingy_none_sa58"},
+		InstallSound = "Generic_Grip_LargeAttach",
+		UninstallSound = "Generic_Grip_LargeDetach",
+        Bone = "weapon",
+        Pos = Vector(0, -8, -0.7),
+        Ang = Angle(0, 90, 180),
+    },
     {
         PrintName = "Sights",
         Bone = "weapon",
         Pos = Vector(-0, -0.3, 1.8),
         Ang = Angle(0, 90, -0),
-        Category = {"csgo_optic", "scp5k_optic"},
-		InstalledElements = {"sights_none_m24a3", "sights1_none_m24a3", "eft_optic_medium", "eft_optic_large"},
+        Category = {"csgo_optic", "scp5k_optic", "cod2019_optic"},
+		InstalledElements = {"sights_none_m24a3", "sights1_none_m24a3"},
 		InstallSound = "Generic_Sight_LargeAttach",
 		UninstallSound = "Generic_Sight_LargeDetach",
         CorrectiveAng = Angle(-0.05, 0.65, 0),
 		Scale = 1,
     },
-    -- {
-        -- PrintName = "Tactical",
-        -- DefaultAttName = "Default",
-        -- Category = {"csgo_tac"},
-		-- InstallSound = "Generic_Light_LargeDetach",
-		-- UninstallSound = "Generic_Light_SmallAttach",
-		-- InstalledElements = {"gripthingy_sa58"},
-		-- UnInstalledElements = {"gripthingy_none_sa58"},
-        -- Bone = "weapon",
-		-- Icon_Offset = Vector(0, 1, 0),
-        -- Pos = Vector(1, -10.5, 1.1),
-        -- Ang = Angle(0, 90, -90),
-		-- Scale = 1.1,
-    -- },
+    {
+        PrintName = "Tactical",
+        DefaultAttName = "Default",
+        Category = {"cod2019_tac_rail_cylinder"},
+		InstallSound = "Generic_Light_LargeDetach",
+		UninstallSound = "Generic_Light_SmallAttach",
+        Bone = "weapon",
+		Icon_Offset = Vector(0, 0, 0),
+        Pos = Vector(0, -18, 1.1),
+        Ang = Angle(0, 90, -0),
+		Scale = 1.2,
+    },
     {
         PrintName = "Ammo",
         Bone = "magazine",
@@ -499,6 +510,25 @@ SWEP.Attachments = {
         PrintName = "Cosmetic",
         Category = {"universal_camo"},
         CosmeticOnly = true,
+    },
+	{ 
+        PrintName = "Charm",
+        CosmeticOnly = true,
+        Category = "charm",
+        Bone = "weapon",
+        Pos = Vector(-0.7, -1, 0.8),
+		Ang = Angle(0, 90, -15),
+		Icon_Offset = Vector(-2.5, 0, 1.5),
+		Scale = 1,
+    },
+    { 
+        PrintName = "Stats",
+        Category = "killcounter",
+        Bone = "weapon",
+        Pos = Vector(-0.7, 1,0),
+		Ang = Angle(0, 90, 0),
+		Icon_Offset = Vector(-4.85, 0.05, 2.3),
+		CosmeticOnly = true,
     },
 }
 
@@ -602,19 +632,24 @@ SWEP.Animations = {
 			{s = "WeaponARC9_m24a3_MagPouch", t = 10 / 30},
 			{s = "WeaponARC9_m24a3_MagIn", t = 36 / 30},
         },
-		IKTimeLine = {
-            {
+		        IKTimeLine = {
+		            {
                 t = 0,
+                lhik = 1,
+                rhik = 1
+            },
+            {
+                t = 0.2,
                 lhik = 0,
                 rhik = 1
             },
             {
-                t = 1,
+                t = 0.71,
                 lhik = 0,
                 rhik = 1
             },
             {
-                t = 1,
+                t = 0.81,
                 lhik = 1,
                 rhik = 1
             },
@@ -632,15 +667,25 @@ SWEP.Animations = {
 			{s = "WeaponARC9_m24a3_Equip", t = 110 / 30},
         },
 		IKTimeLine = {
-            {
+		            {
                 t = 0,
-                lhik = 0.1,
-                rhik = 0.1
+                lhik = 1,
+                rhik = 1
             },
             {
-                t = 1,
+                t = 0.2,
                 lhik = 0,
-                rhik = 0
+                rhik = 1
+            },
+            {
+                t = 0.71,
+                lhik = 0,
+                rhik = 1
+            },
+            {
+                t = 0.81,
+                lhik = 1,
+                rhik = 1
             },
         },
 	},
@@ -656,23 +701,23 @@ SWEP.Animations = {
             --{s = "Generic_ClothEquip", t = 95 / 30},
         },
 		IKTimeLine = {
-            {
+		            {
                 t = 0,
                 lhik = 1,
                 rhik = 1
             },
             {
-                t = 0.1,
-                lhik = 0,
-                rhik = 0
+                t = 0.2,
+                lhik = 1,
+                rhik = 1
             },
             {
-                t = 0.61,
-                lhik = 0,
-                rhik = 0
+                t = 0.71,
+                lhik = 1,
+                rhik = 1
             },
             {
-                t = 1,
+                t = 0.81,
                 lhik = 1,
                 rhik = 1
             },
@@ -687,23 +732,23 @@ SWEP.Animations = {
 			{s = "WeaponARC9_m24a3_MagCheckIn", t = 37 / 30},
         },
 		IKTimeLine = {
-            {
+		            {
                 t = 0,
                 lhik = 1,
                 rhik = 1
             },
             {
-                t = 0.1,
+                t = 0.2,
                 lhik = 0,
-                rhik = 0
+                rhik = 1
             },
             {
-                t = 0.62,
+                t = 0.71,
                 lhik = 0,
-                rhik = 0
+                rhik = 1
             },
             {
-                t = 0.8,
+                t = 0.81,
                 lhik = 1,
                 rhik = 1
             },
@@ -718,23 +763,23 @@ SWEP.Animations = {
 			{s = "WeaponARC9_m24a3_MagCheckIn", t = 37 / 30},
         },
 		IKTimeLine = {
-            {
+		            {
                 t = 0,
                 lhik = 1,
                 rhik = 1
             },
             {
-                t = 0.1,
+                t = 0.2,
                 lhik = 0,
-                rhik = 0
+                rhik = 1
             },
             {
-                t = 0.62,
+                t = 0.71,
                 lhik = 0,
-                rhik = 0
+                rhik = 1
             },
             {
-                t = 0.8,
+                t = 0.81,
                 lhik = 1,
                 rhik = 1
             },

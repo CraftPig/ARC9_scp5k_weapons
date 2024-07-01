@@ -51,7 +51,7 @@ SWEP.MirrorVMWM = true
  SWEP.WorldModelOffset = {
      Pos = Vector(-12, 4.5, -7), -- non tpik (while on ground, on npc etc)
      Ang = Angle(0, 0, 180),
-     TPIKPos = Vector(-9, 0, -5), -- arc9_tpik 1, you can make cool poses with it
+     TPIKPos = Vector(-12, 1.2, -4), -- arc9_tpik 1, you can make cool poses with it
      TPIKAng = Angle(0, -10, 180),
      Scale = 1
  }
@@ -62,7 +62,7 @@ SWEP.HoldType = "revolver"
 SWEP.HoldTypeSprint = "revolver"
 SWEP.HoldTypeHolstered = nil
 SWEP.HoldTypeSights = "revolver"
-SWEP.HoldTypeCustomize = "magic"
+SWEP.HoldTypeCustomize = "passive"
 SWEP.HoldTypeBlindfire = "revolver"
 SWEP.HoldTypeNPC = "revolver"
 
@@ -313,7 +313,7 @@ SWEP.BobWalkMult = 1 -- same but for all non sprint actions
 SWEP.ViewModelFOVBase = 90
 
 SWEP.IronSights = {
-    Pos = Vector(-2.9, -1, 2.9),
+    Pos = Vector(-2.9, 0.2, 2.9),
     Ang = Angle(-0.2, -0.0, 0),
     Magnification = 1.1,
     CrosshairInSights = false,
@@ -325,8 +325,8 @@ SWEP.SightMidPoint = { -- Where the gun should be at the middle of it's irons
     Ang = Angle(0, 0, -45),
 }
 
-SWEP.ActivePos = Vector(-3.5, -7, 0.0)
-SWEP.ActiveAng = Angle(-1, 2, -9)
+SWEP.ActivePos = Vector(-3, -5, .4)
+SWEP.ActiveAng = Angle(0, 2, -10)
 
 SWEP.MovingPos =  Vector(0, -0.5, 0)
 SWEP.MovingAng =  Angle(0, 0, 2)
@@ -420,9 +420,9 @@ SWEP.Attachments = {
     {
         PrintName = "Muzzle",
         DefaultAttName = "Standard Muzzle",
-        Category = {"muzzle","muzzle_pistols", "scp5k_muzzle_pistol"},
-        Bone = "slide",
-        Pos = Vector(-0.0, -5.8, 0),
+        Category = {"muzzle","muzzle_pistols", "scp5k_muzzle_pistol","cod2019_muzzle"},
+        Bone = "barrel",
+        Pos = Vector(-0.0, -2.4, 0.17),
         Ang = Angle(0, 90, -0),
 		InstallSound = "Generic_Barrel_SmallAttach",
 		UninstallSound = "Generic_Barrel_SmallDetach",
@@ -445,7 +445,7 @@ SWEP.Attachments = {
         Bone = "Slide",
         Pos = Vector(0, -1.3, 0.4),
         Ang = Angle(0, 90, -0),
-        Category = {"csgo_optics_pistols_alt", "scp5k_optic_pistol", "eft_optic_small"},
+        Category = {"csgo_optics_pistols_alt", "scp5k_optic_pistol", "cod2019_optic"},
         CorrectiveAng = Angle(-0.3, 0.4, 0),
 		InstallSound = "Generic_Sight_SmallAttach",
 		UninstallSound = "Generic_Sight_SmallDetach",
@@ -454,9 +454,9 @@ SWEP.Attachments = {
     {
         PrintName = "Tactical",
         DefaultAttName = "Default",
-        Category = {"csgo_tac_pistols"},
+        Category = {"csgo_tac_pistols","cod2019_tac_pistols","cod2019_grip_pistols"},
         Bone = "weapon",
-        Pos = Vector(0, -3.0, 0.5),
+        Pos = Vector(0, -3, 0.5),
         Ang = Angle(0, 90, 0),
 		InstallSound = "Generic_Light_SmallAttach",
 		UninstallSound = "Generic_Light_SmallDetach",
@@ -480,6 +480,26 @@ SWEP.Attachments = {
         PrintName = "View",
         Category = {"scp5k_view_02"},
         CosmeticOnly = true,
+    },
+	{ 
+        PrintName = "Charm",
+        CosmeticOnly = true,
+        Category = "charm",
+        Bone = "weapon",
+        Pos = Vector(-0.55, -1, 0.9),
+		Ang = Angle(-0, 90, -0),
+		Icon_Offset = Vector(-2.5, 0, 1.5),
+		Scale = 0.8,
+    },
+    { 
+        PrintName = "Stats",
+        Category = "killcounter",
+        Bone = "weapon",
+        Pos = Vector(-0.5, -3,0.7),
+		Ang = Angle(-0, 90, 0),
+		Icon_Offset = Vector(-4.85, 0.05, 2.3),
+		CosmeticOnly = true,
+		Scale = 0.7,
     },
 }
 
@@ -602,6 +622,28 @@ SWEP.Animations = {
 			{s = "WeaponARC9_P320_MagIn", t = 30 / 30},
             {s = "WeaponARC9_P320_MagPouchUp", t = 45 / 30},
         },
+		IKTimeLine = {
+		            {
+                t = 0,
+                lhik = 1,
+                rhik = 1
+            },
+            {
+                t = 0.2,
+                lhik = 0,
+                rhik = 1
+            },
+            {
+                t = 0.71,
+                lhik = 0,
+                rhik = 1
+            },
+            {
+                t = 0.81,
+                lhik = 1,
+                rhik = 1
+            },
+        },
     },
 	["reload_empty"] = {
         Source = {"reload_empty"},
@@ -613,6 +655,28 @@ SWEP.Animations = {
 			{s = "WeaponARC9_GLOCK_EmptyMagPouch", t = 10 / 30},
 			{s = "WeaponARC9_P320_EmptyMagIn", t = 26 / 30},
 			{s = "WeaponARC9_P320_EmptyBolt", t = 55 / 30},
+        },
+		IKTimeLine = {
+		            {
+                t = 0,
+                lhik = 1,
+                rhik = 1
+            },
+            {
+                t = 0.2,
+                lhik = 0,
+                rhik = 1
+            },
+            {
+                t = 0.71,
+                lhik = 0,
+                rhik = 1
+            },
+            {
+                t = 0.81,
+                lhik = 1,
+                rhik = 1
+            },
         },
     },
     --------------------------------------------------- Tacticool
@@ -626,6 +690,28 @@ SWEP.Animations = {
 			{s = "WeaponARC9_P320_BoltForward", t = 126 / 30},
             {s = "WeaponARC9_P320_BoltHit", t = 142 / 30},
         },
+		IKTimeLine = {
+		            {
+                t = 0,
+                lhik = 1,
+                rhik = 1
+            },
+            {
+                t = 0.2,
+                lhik = 0,
+                rhik = 1
+            },
+            {
+                t = 0.81,
+                lhik = 0,
+                rhik = 1
+            },
+            {
+                t = 0.91,
+                lhik = 1,
+                rhik = 1
+            },
+        },
     },
 	["inspect"] = {
         Source = {"magcheck"},
@@ -635,6 +721,28 @@ SWEP.Animations = {
             {s = "WeaponARC9_P320_MagCheckOut", t = 0 / 30},
 			{s = "WeaponARC9_P320_MagCheckIn", t = 60 / 30},
         },
+		IKTimeLine = {
+		            {
+                t = 0,
+                lhik = 1,
+                rhik = 1
+            },
+            {
+                t = 0.2,
+                lhik = 0,
+                rhik = 1
+            },
+            {
+                t = 0.71,
+                lhik = 0,
+                rhik = 1
+            },
+            {
+                t = 0.81,
+                lhik = 1,
+                rhik = 1
+            },
+        },
     },
 	["inspect_empty"] = {
         Source = {"magcheck_empty"},
@@ -643,6 +751,28 @@ SWEP.Animations = {
 		EventTable = {
             {s = "WeaponARC9_P320_MagCheckOut", t = 0 / 30},
 			{s = "WeaponARC9_P320_MagCheckIn", t = 60 / 30},
+        },
+		IKTimeLine = {
+		            {
+                t = 0,
+                lhik = 1,
+                rhik = 1
+            },
+            {
+                t = 0.2,
+                lhik = 0,
+                rhik = 1
+            },
+            {
+                t = 0.71,
+                lhik = 0,
+                rhik = 1
+            },
+            {
+                t = 0.81,
+                lhik = 1,
+                rhik = 1
+            },
         },
     },
     ["idle_sprint"] = {

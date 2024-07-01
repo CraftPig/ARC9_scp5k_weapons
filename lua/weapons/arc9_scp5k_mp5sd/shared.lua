@@ -50,10 +50,11 @@ SWEP.MirrorVMWM = true
  SWEP.WorldModelOffset = {
      Pos = Vector(-3, 4, -8), -- non tpik (while on ground, on npc etc)
      Ang = Angle(0, 0, 180),
-     TPIKPos = Vector(-3, 2, -5), -- arc9_tpik 1, you can make cool poses with it
-     TPIKAng = Angle(0, -10, 180),
+     TPIKPos = Vector(-5, 3, -6), -- arc9_tpik 1, you can make cool poses with it
+     TPIKAng = Angle(0, -10, 170),
      Scale = 1
  }
+
 
 ---------------
 ---- Hold Types
@@ -61,9 +62,10 @@ SWEP.HoldType = "ar2"
 SWEP.HoldTypeSprint = "ar2"
 SWEP.HoldTypeHolstered = nil
 SWEP.HoldTypeSights = "ar2"
-SWEP.HoldTypeCustomize = "magic"
+SWEP.HoldTypeCustomize = "passive"
 SWEP.HoldTypeBlindfire = "ar2"
 SWEP.HoldTypeNPC = "ar2"
+
 
 SWEP.AnimShoot = ACT_HL2MP_GESTURE_RANGE_ATTACK_AR2
 SWEP.AnimReload = ACT_HL2MP_GESTURE_RELOAD_MAGIC -- While in TPIK only -- Tip: if you dont want any additional anim put ACT_HL2MP_GESTURE_RELOAD_MAGIC here instead!
@@ -337,8 +339,8 @@ SWEP.SightMidPoint = { -- Where the gun should be at the middle of it's irons
     Ang = Angle(0, 0, -45),
 }
 
-SWEP.ActivePos = Vector(-1., -0.0, 1.0)
-SWEP.ActiveAng = Angle(-0.0, 1, -0)
+SWEP.ActivePos = Vector(-0.5, 1.2, 0.5)
+SWEP.ActiveAng = Angle(0, 2, -3)
 
 SWEP.MovingPos =  Vector(0, -0.5, 0)
 SWEP.MovingAng =  Angle(0, 0, 2)
@@ -443,7 +445,7 @@ SWEP.Attachments = {
         Bone = "weapon",
         Pos = Vector(-0, -1.8, 3.2),
         Ang = Angle(0, 90, -0),
-        Category = {"csgo_optic", "scp5k_optic", "eft_optic_medium", "eft_optic_large"},
+        Category = {"csgo_optic", "scp5k_optic", "cod2019_optic"},
 		InstalledElements = {"rail_mp5"},
 		UnInstalledElements = {"rail_none_mp5"},
 		InstallSound = "Generic_Sight_LargeAttach",
@@ -451,6 +453,18 @@ SWEP.Attachments = {
         CorrectiveAng = Angle(-0.3, 0.5, 0),
 		Scale = 1,
     },
+	{
+        PrintName = "Grip",
+        Category = {"grip", "scp5k_foregrip","cod2019_grip"},
+        Bone = "weapon",
+		InstallSound = "Generic_Grip_LargeAttach",
+		UninstallSound = "Generic_Grip_LargeDetach",
+	    InstalledElements = {"handguard_ak74_none", "manticore_ak74"},
+        Pos = Vector(0, -7, 0.2),
+        Ang = Angle(0, 90, 180),
+		Icon_Offset = Vector(0, -0, 1),
+		Scale = 1,
+   },
     {
         PrintName = "Ammo",
         Bone = "weapon",
@@ -468,6 +482,25 @@ SWEP.Attachments = {
         PrintName = "Cosmetic",
         Category = {"universal_camo"},
         CosmeticOnly = true,
+    },
+	{ 
+        PrintName = "Charm",
+        CosmeticOnly = true,
+        Category = "charm",
+        Bone = "weapon",
+        Pos = Vector(-0.7, -1, 1.7),
+		Ang = Angle(-0, 90, 10),
+		Icon_Offset = Vector(-2.5, 0, 1.5),
+		Scale = 1,
+    },
+    { 
+        PrintName = "Stats",
+        Category = "killcounter",
+        Bone = "weapon",
+        Pos = Vector(-0.6, 2,0.3),
+		Ang = Angle(-0, 90, 0),
+		Icon_Offset = Vector(-4.85, 0.05, 2.3),
+		CosmeticOnly = true,
     },
 }
 
@@ -549,21 +582,16 @@ SWEP.Animations = {
 		IKTimeLine = {
             {
                 t = 0,
-                lhik = 1,
+                lhik = 0,
                 rhik = 1
             },
             {
-                t = 0.1,
+                t = 0.45,
                 lhik = 0,
-                rhik = 0
+                rhik = 1
             },
             {
-                t = 0.61,
-                lhik = 0,
-                rhik = 0
-            },
-            {
-                t = 1,
+                t = 0.67,
                 lhik = 1,
                 rhik = 1
             },
@@ -601,8 +629,8 @@ SWEP.Animations = {
         },
 		IKTimeLine = {
             {
-                t = 0,
-                lhik = 1,
+                t = 0.1,
+                lhik = 0,
                 rhik = 0
             },
             {
@@ -611,12 +639,12 @@ SWEP.Animations = {
                 rhik = 0
             },
             {
-                t = 0.61,
+                t = 0.75,
                 lhik = 0,
                 rhik = 0
             },
             {
-                t = 0.8,
+                t = 0.82,
                 lhik = 1,
                 rhik = 1
             },
@@ -646,7 +674,7 @@ SWEP.Animations = {
                 rhik = 0
             },
             {
-                t = 0.68,
+                t = 0.78,
                 lhik = 0,
                 rhik = 0
             },
@@ -680,7 +708,7 @@ SWEP.Animations = {
                 rhik = 0
             },
             {
-                t = 0.61,
+                t = 0.71,
                 lhik = 0,
                 rhik = 0
             },
@@ -712,7 +740,7 @@ SWEP.Animations = {
                 rhik = 0
             },
             {
-                t = 0.62,
+                t = 0.72,
                 lhik = 0,
                 rhik = 0
             },
@@ -744,7 +772,7 @@ SWEP.Animations = {
                 rhik = 0
             },
             {
-                t = 0.62,
+                t = 0.72,
                 lhik = 0,
                 rhik = 0
             },

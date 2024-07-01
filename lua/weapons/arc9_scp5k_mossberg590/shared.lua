@@ -48,22 +48,22 @@ SWEP.UseHands = true
 SWEP.WorldModel = "models/weapons/w_pist_usp.mdl"
 SWEP.MirrorVMWM = true 
  SWEP.WorldModelOffset = {
-     Pos = Vector(-1, 4, -6.8), -- non tpik (while on ground, on npc etc)
-     Ang = Angle(-5, 0, 180),
-     TPIKPos = Vector(4, 6, -9), -- arc9_tpik 1, you can make cool poses with it
-     TPIKAng = Angle(0, -10, 180),
+     Pos = Vector(-3, 4, -8), -- non tpik (while on ground, on npc etc)
+     Ang = Angle(0, 0, 180),
+     TPIKPos = Vector(-5, 3, -6), -- arc9_tpik 1, you can make cool poses with it
+     TPIKAng = Angle(0, -10, 170),
      Scale = 1
  }
 
 ---------------
 ---- Hold Types
-SWEP.HoldType = "shotgun"
-SWEP.HoldTypeSprint = "shotgun"
+SWEP.HoldType = "ar2"
+SWEP.HoldTypeSprint = "ar2"
 SWEP.HoldTypeHolstered = nil
-SWEP.HoldTypeSights = "shotgun"
-SWEP.HoldTypeCustomize = "magic"
-SWEP.HoldTypeBlindfire = "shotgun"
-SWEP.HoldTypeNPC = "shotgun"
+SWEP.HoldTypeSights = "ar2"
+SWEP.HoldTypeCustomize = "passive"
+SWEP.HoldTypeBlindfire = "ar2"
+SWEP.HoldTypeNPC = "ar2"
 
 SWEP.AnimShoot = ACT_HL2MP_GESTURE_RANGE_ATTACK_AR2
 SWEP.AnimReload = ACT_HL2MP_GESTURE_RELOAD_MAGIC -- While in TPIK only -- Tip: if you dont want any additional anim put ACT_HL2MP_GESTURE_RELOAD_MAGIC here instead!
@@ -340,7 +340,7 @@ SWEP.SightMidPoint = { -- Where the gun should be at the middle of it's irons
     Ang = Angle(0, 0, -45),
 }
 
-SWEP.ActivePos = Vector(-1.0, 0.0, 0.8)
+SWEP.ActivePos = Vector(-1.0, 1.2, 0.7)
 SWEP.ActiveAng = Angle(-0.0, 1, -0)
 
 SWEP.MovingPos =  Vector(0, -0.5, 0)
@@ -444,7 +444,7 @@ SWEP.Attachments = {
     {
         PrintName = "Muzzle",
         DefaultAttName = "Standard Muzzle",
-        Category = {"muzzle","muzzle_m4","muzzle_snipers"},
+        Category = {"muzzle","muzzle_m4","muzzle_snipers","cod2019_muzzle"},
 		InstalledElements = {"muzzle_none_sa58"},
 		UnInstalledElements = {"muzzle_sa58"},
 		InstallSound = "Generic_Barrel_LargeAttach",
@@ -457,7 +457,7 @@ SWEP.Attachments = {
 	{
         PrintName = "Grip",
         DefaultAttName = "Default",
-        Category = {"grip","grip_mk18","grip_m4","fas_ubgl", "scp5k_foregrip"},
+        Category = {"grip","grip_mk18","grip_m4","fas_ubgl", "scp5k_foregrip","cod2019_grip"},
 		InstalledElements = {"gripthingy_sa58"},
 		UnInstalledElements = {"gripthingy_none_sa58"},
 		InstallSound = "Generic_Grip_LargeAttach",
@@ -471,7 +471,7 @@ SWEP.Attachments = {
         Bone = "weapon",
         Pos = Vector(-0, 2.6, 0.8),
         Ang = Angle(0, 90, -0),
-        Category = {"csgo_optic", "scp5k_optic", "eft_optic_medium", "eft_optic_large"},
+        Category = {"csgo_optic", "scp5k_optic",  "cod2019_optic"},
 		InstalledElements = {"rail_m590"},
 		UnInstalledElements = {"rail_m590_none"},
 		InstallSound = "Generic_Sight_LargeAttach",
@@ -479,20 +479,18 @@ SWEP.Attachments = {
         CorrectiveAng = Angle(-0.1, 0.57, 0),
 		Scale = 1,
     },
-    -- {
-        -- PrintName = "Tactical",
-        -- DefaultAttName = "Default",
-        -- Category = {"csgo_tac"},
-		-- InstallSound = "Generic_Light_LargeDetach",
-		-- UninstallSound = "Generic_Light_SmallAttach",
-		-- InstalledElements = {"gripthingy_sa58"},
-		-- UnInstalledElements = {"gripthingy_none_sa58"},
-        -- Bone = "weapon",
-		-- Icon_Offset = Vector(0, 1, 0),
-        -- Pos = Vector(1, -10.5, 1.1),
-        -- Ang = Angle(0, 90, -90),
-		-- Scale = 1.1,
-    -- },
+    {
+        PrintName = "Tactical",
+        DefaultAttName = "Default",
+        Category = {"cod2019_tac_rail_cylinder"},
+		InstallSound = "Generic_Light_LargeDetach",
+		UninstallSound = "Generic_Light_SmallAttach",
+        Bone = "weapon",
+		Icon_Offset = Vector(0, 0, 0),
+        Pos = Vector(0, -16, -0),
+        Ang = Angle(0, 90, -0),
+		Scale = 1.2,
+    },
     {
         PrintName = "Ammo",
         Bone = "weapon",
@@ -510,6 +508,25 @@ SWEP.Attachments = {
         PrintName = "Cosmetic",
         Category = {"universal_camo", "scp5k_mossberg590_skin"},
         CosmeticOnly = true,
+    },
+	{ 
+        PrintName = "Charm",
+        CosmeticOnly = true,
+        Category = "charm",
+        Bone = "weapon",
+        Pos = Vector(-0.6, 6, -1),
+		Ang = Angle(0, 90, -0),
+		Icon_Offset = Vector(-2.5, 0, 1.5),
+		Scale = 1,
+    },
+    { 
+        PrintName = "Stats",
+        Category = "killcounter",
+        Bone = "weapon",
+        Pos = Vector(-0.6, 2,-1),
+		Ang = Angle(-0, 90, 0),
+		Icon_Offset = Vector(-4.85, 0.05, 2.3),
+		CosmeticOnly = true,
     },
 }
 

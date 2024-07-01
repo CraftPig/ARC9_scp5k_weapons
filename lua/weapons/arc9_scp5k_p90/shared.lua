@@ -48,22 +48,23 @@ SWEP.UseHands = true
 SWEP.WorldModel = "models/weapons/w_pist_usp.mdl"
 SWEP.MirrorVMWM = true 
  SWEP.WorldModelOffset = {
-     Pos = Vector(-1, 3.5, -8.5), -- non tpik (while on ground, on npc etc)
-     Ang = Angle(-10, 0, 180),
-     TPIKPos = Vector(6, 6, -13), -- arc9_tpik 1, you can make cool poses with it
-     TPIKAng = Angle(0, -10, 180),
+     Pos = Vector(-3, 4, -8), -- non tpik (while on ground, on npc etc)
+     Ang = Angle(0, 0, 180),
+     TPIKPos = Vector(-5, 3, -6), -- arc9_tpik 1, you can make cool poses with it
+     TPIKAng = Angle(0, -10, 170),
      Scale = 1
  }
 
+
 ---------------
 ---- Hold Types
-SWEP.HoldType = "shotgun"
-SWEP.HoldTypeSprint = "shotgun"
+SWEP.HoldType = "ar2"
+SWEP.HoldTypeSprint = "ar2"
 SWEP.HoldTypeHolstered = nil
-SWEP.HoldTypeSights = "shotgun"
-SWEP.HoldTypeCustomize = "magic"
-SWEP.HoldTypeBlindfire = "shotgun"
-SWEP.HoldTypeNPC = "shotgun"
+SWEP.HoldTypeSights = "ar2"
+SWEP.HoldTypeCustomize = "passive"
+SWEP.HoldTypeBlindfire = "ar2"
+SWEP.HoldTypeNPC = "ar2"
 
 SWEP.AnimShoot = ACT_HL2MP_GESTURE_RANGE_ATTACK_AR2
 SWEP.AnimReload = ACT_HL2MP_GESTURE_RELOAD_MAGIC -- While in TPIK only -- Tip: if you dont want any additional anim put ACT_HL2MP_GESTURE_RELOAD_MAGIC here instead!
@@ -337,8 +338,8 @@ SWEP.SightMidPoint = { -- Where the gun should be at the middle of it's irons
     Ang = Angle(0, 0, -45),
 }
 
-SWEP.ActivePos = Vector(0.25, -2, 1.5)
-SWEP.ActiveAng = Angle(-0.0, 1, -0)
+SWEP.ActivePos = Vector(0.25, 1, 2)
+SWEP.ActiveAng = Angle(-0.0, 2, -0)
 
 SWEP.MovingPos =  Vector(0, -0.5, 0)
 SWEP.MovingAng =  Angle(0, 0, 2)
@@ -441,7 +442,7 @@ SWEP.Attachments = {
     {
         PrintName = "Muzzle",
         DefaultAttName = "Standard Muzzle",
-        Category = {"muzzle", "scp5k_muzzle"},
+        Category = {"muzzle", "scp5k_muzzle","cod2019_muzzle"},
 		InstalledElements = {"muzzle_none_P90"},
 		UnInstalledElements = {"muzzle_P90"},
 		InstallSound = "Generic_Barrel_LargeAttach",
@@ -449,25 +450,25 @@ SWEP.Attachments = {
         Bone = "weapon",
         Pos = Vector(0.1, -8.1, 0),
         Ang = Angle(0, 90, 90),
-        Scale = 0.6,
+        Scale = 1,
     },
     {
         PrintName = "Sights",
         Bone = "weapon",
         Pos = Vector(3.7, -5, 0),
         Ang = Angle(0, 90, 90),
-        Category = {"csgo_optic", "go_optic_mp7", "scp5k_optic", "eft_optic_medium", "eft_optic_large"},
+        Category = {"csgo_optic", "go_optic_mp7", "scp5k_optic", "cod2019_optic"},
 		InstalledElements = {"sights_down_mp7"},
 		UnInstalledElements = {"sights_up_mp7"},
 		InstallSound = "Generic_Sight_LargeAttach",
 		UninstallSound = "Generic_Sight_LargeDetach",
 		Icon_Offset = Vector(0, 0, 0.6),
         CorrectiveAng = Angle(0.07, 0.6, 0),
-		Scale = 0.95,
+		Scale = 1,
     },
 	{
         PrintName = "Tactical",
-        Category = "csgo_tac",
+        Category = {"cod2019_tac","csgo_tac"},
 		InstallSound = "Generic_Light_LargeAttach",
 		UninstallSound = "Generic_Light_LargeDetach",
         Bone = "weapon",
@@ -493,7 +494,27 @@ SWEP.Attachments = {
         Category = {"universal_camo"},
         CosmeticOnly = true,
     },
+	{ 
+        PrintName = "Charm",
+        CosmeticOnly = true,
+        Category = "charm",
+        Bone = "weapon",
+        Pos = Vector(-0, -0.5, 1),
+		Ang = Angle(0, 90, 90),
+		Icon_Offset = Vector(-2.5, 0, 1.5),
+		Scale = 1,
+    },
+    { 
+        PrintName = "Stats",
+        Category = "killcounter",
+        Bone = "weapon",
+        Pos = Vector(-1, 3.5, 0.7),
+		Ang = Angle(0, 90, 90),
+		Icon_Offset = Vector(-4.85, 0.05, 2.3),
+		CosmeticOnly = true,
+    },
 }
+
 
 -------------------------------------------------------------------------------------------------------
 -- Animations -----------------------------------------------------------------------------------------
