@@ -28,6 +28,7 @@
 ---    Chapter_MP5K
 ---    Chapter_UMP45
 ---    Chapter_MP7
+---    Chapter_Stribog
 ------ Chapter_Other
 ---    Chapter_M1014
 ---    Chapter_Mossberg590
@@ -519,6 +520,32 @@ sound.Add( {
 		"weapons/arc9_scp5k/tail/SW500_Shot_Tail_OutDoor_02.ogg",
 		"weapons/arc9_scp5k/tail/SW500_Shot_Tail_OutDoor_03.ogg",
 		"weapons/arc9_scp5k/tail/SW500_Shot_Tail_OutDoor_04.ogg",
+ 	}
+} )
+sound.Add( {
+	name = "WeaponARC9_STRIBOG_TailOutdoor",
+	channel = CHAN_STREAM,
+	volume = 1.0,
+	level = 120,
+	pitch = {95,105},
+	sound = {
+		"weapons/arc9_scp5k/tail/Stribog_Tail_Outdoor_1.ogg",
+		"weapons/arc9_scp5k/tail/Stribog_Tail_Outdoor_2.ogg",
+		"weapons/arc9_scp5k/tail/Stribog_Tail_Outdoor_3.ogg",
+ 	}
+} )
+sound.Add( {
+	name = "WeaponARC9_STRIBOG_TailIndoor",
+	channel = CHAN_STREAM,
+	volume = 1.0,
+	level = 120,
+	pitch = {95,105},
+	sound = {
+		"weapons/arc9_scp5k/tail/Stribog_Tail_Indoor_1.ogg",
+		"weapons/arc9_scp5k/tail/Stribog_Tail_Indoor_2.ogg",
+		"weapons/arc9_scp5k/tail/Stribog_Tail_Indoor_3.ogg",
+		"weapons/arc9_scp5k/tail/Stribog_Tail_Indoor_4.ogg",
+		"weapons/arc9_scp5k/tail/Stribog_Tail_Indoor_5.ogg",
  	}
 } )
 sound.Add( {
@@ -5290,6 +5317,140 @@ sound.Add( {
  	},
 } )
 
+------------------------------ Chapter_STRIBOG
+--------- Fire
+sound.Add( {
+	name = "WeaponARC9_STRIBOG_Fire",
+	channel = CHAN_WEAPON,
+	volume = 1.0,
+	level = 120,
+	pitch = {95,105},
+	sound = {
+		"weapons/arc9_scp5k/STRIBOG/fire/stribog_shot_00.ogg",
+		"weapons/arc9_scp5k/STRIBOG/fire/stribog_shot_01.ogg",
+		"weapons/arc9_scp5k/STRIBOG/fire/stribog_shot_02.ogg",
+		"weapons/arc9_scp5k/STRIBOG/fire/stribog_shot_03.ogg",
+		"weapons/arc9_scp5k/STRIBOG/fire/stribog_shot_04.ogg",
+ 	},
+} )
+sound.Add( {
+	name = "WeaponARC9_STRIBOG_FireSilenced",
+	channel = CHAN_WEAPON,
+	volume = 1.0,
+	level = 100,
+	pitch = {95,105},
+	sound = {
+		"weapons/arc9_scp5k/STRIBOG/fire/stribog_shot_sil_00.ogg",
+		"weapons/arc9_scp5k/STRIBOG/fire/stribog_shot_sil_01.ogg",
+		"weapons/arc9_scp5k/STRIBOG/fire/stribog_shot_sil_02.ogg",
+		"weapons/arc9_scp5k/STRIBOG/fire/stribog_shot_sil_03.ogg",
+		"weapons/arc9_scp5k/STRIBOG/fire/stribog_shot_sil_04.ogg",
+ 	},
+} )
+--------- Reload
+sound.Add( {
+	name = "WeaponARC9_STRIBOG_MagOut",
+	channel = CHAN_WEAPON,
+	volume = 1.0,
+	level = 55,
+	pitch = {95,105},
+	sound = {
+		"weapons/arc9_scp5k/STRIBOG/Stribog_Reload_Half_MagOut.ogg",
+ 	},
+} )
+sound.Add( {
+	name = "WeaponARC9_STRIBOG_MagIn",
+	channel = CHAN_ITEM,
+	volume = 1.0,
+	level = 55,
+	pitch = {95,105},
+	sound = {
+		"weapons/arc9_scp5k/STRIBOG/Stribog_Reload_Half_MagIn.ogg",
+ 	},
+} )
+--------- Reload_Empty
+sound.Add( {
+	name = "WeaponARC9_STRIBOG_MagOutEmpty",
+	channel = CHAN_WEAPON,
+	volume = 1.0,
+	level = 55,
+	pitch = {95,105},
+	sound = {
+		"weapons/arc9_scp5k/STRIBOG/Stribog_Reload_Empty_MagOut.ogg",
+ 	},
+} )
+sound.Add( {
+	name = "WeaponARC9_STRIBOG_MagInEmpty",
+	channel = CHAN_WEAPON,
+	volume = 1.0,
+	level = 55,
+	pitch = {95,105},
+	sound = {
+		"weapons/arc9_scp5k/STRIBOG/Stribog_Reload_Empty_MagIn.ogg",
+ 	},
+} )
+sound.Add( {
+	name = "WeaponARC9_STRIBOG_BoltEmpty",
+	channel = CHAN_WEAPON,
+	volume = 1.0,
+	level = 55,
+	pitch = {95,105},
+	sound = {
+		"weapons/arc9_scp5k/STRIBOG/Stribog_Reload_Empty_Bolt.ogg",
+ 	},
+} )
+--------- MagCheck
+sound.Add( {
+	name = "WeaponARC9_STRIBOG_MagCheckOut",
+	channel = CHAN_WEAPON,
+	volume = 1.0,
+	level = 55,
+	pitch = {95,105},
+	sound = {
+		"weapons/arc9_scp5k/STRIBOG/Stribog_MagCheck_MagOut.ogg",
+ 	},
+} )
+sound.Add( {
+	name = "WeaponARC9_STRIBOG_MagCheckIn",
+	channel = CHAN_WEAPON,
+	volume = 1.0,
+	level = 55,
+	pitch = {95,105},
+	sound = {
+		"weapons/arc9_scp5k/STRIBOG/Stribog_MagCheck_MagIn.ogg",
+ 	},
+} )
+--------- Inspect
+sound.Add( {
+	name = "WeaponARC9_STRIBOG_Rotate",
+	channel = CHAN_WEAPON,
+	volume = 1.0,
+	level = 55,
+	pitch = {95,105},
+	sound = {
+		"weapons/arc9_scp5k/STRIBOG/Stribog_Inspect_Rotate.ogg",
+ 	},
+} )
+sound.Add( {
+	name = "WeaponARC9_STRIBOG_BoltBack",
+	channel = CHAN_WEAPON,
+	volume = 1.0,
+	level = 55,
+	pitch = {95,105},
+	sound = {
+		"weapons/arc9_scp5k/STRIBOG/Stribog_Inspect_Bolt_Back.ogg",
+ 	},
+} )
+sound.Add( {
+	name = "WeaponARC9_STRIBOG_BoltForward",
+	channel = CHAN_WEAPON,
+	volume = 1.0,
+	level = 55,
+	pitch = {95,105},
+	sound = {
+		"weapons/arc9_scp5k/STRIBOG/Stribog_Inspect_Bolt_Forward.ogg",
+ 	},
+} )
 ------------------------------------------------------------ Chapter_Other
 ------------------------------ Chapter_M1014
 --------- Fire

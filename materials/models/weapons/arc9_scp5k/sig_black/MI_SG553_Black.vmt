@@ -2,7 +2,7 @@
 //https://developer.valvesoftware.com/wiki/$phong
 "VertexLitGeneric"
 {
-    "$basetexture" "models\weapons\arc9_scp5k\sig\MI_SG553_rgb"
+    "$basetexture" "models\weapons\arc9_scp5k\sig_black\MI_SG553_Black_rgb"
     "$bumpmap" "models\weapons\arc9_scp5k\sig_black\MI_SG553_Black_n"
     "$phongexponenttexture" "models\weapons\arc9_scp5k\sig_black\MI_SG553_Black_e"
    "$color2" "[.8 .8 .8]"
