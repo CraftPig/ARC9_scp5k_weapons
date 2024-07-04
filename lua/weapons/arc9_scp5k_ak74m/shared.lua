@@ -508,7 +508,7 @@ SWEP.Attachments = {
     {
         PrintName = "Tactical",
         DefaultAttName = "Default",
-        Category = {"cod2019_tac","csgo_tac"},
+        Category = {"cod2019_tac","csgo_tac", "scp5k_tactical"},
 		InstalledElements = {"handguard_ak74_none", "manticore_ak74"},
 		InstallSound = "Generic_Light_LargeDetach",
 		UninstallSound = "Generic_Light_SmallAttach",

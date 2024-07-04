@@ -519,7 +519,7 @@ SWEP.Attachments = {
     {
         PrintName = "Tactical",
         DefaultAttName = "Default",
-        Category = {"cod2019_tac_rail_cylinder"},
+        Category = {"cod2019_tac_rail_cylinder", "scp5k_tactical"},
 		InstallSound = "Generic_Light_LargeDetach",
 		UninstallSound = "Generic_Light_SmallAttach",
         Bone = "weapon",

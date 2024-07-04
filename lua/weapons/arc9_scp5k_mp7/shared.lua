@@ -503,7 +503,7 @@ SWEP.Attachments = {
     },
 	{
         PrintName = "Tactical",
-        Category = {"cod2019_tac","csgo_tac"},
+        Category = {"cod2019_tac","csgo_tac", "scp5k_tactical"},
 		InstallSound = "Generic_Light_LargeAttach",
 		UninstallSound = "Generic_Light_LargeDetach",
         Bone = "weapon",

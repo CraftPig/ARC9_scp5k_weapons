@@ -98,7 +98,7 @@ SWEP.RPM = 600
 SWEP.Firemodes = {
 	{
 	    Mode = -1,
-		RPM = 450
+		RPM = 500
     },
 	{
 	    Mode = 1,
@@ -169,7 +169,7 @@ SWEP.PhysBulletDontInheritPlayerVelocity = false -- Set to true to disable "Brow
 SWEP.Ammo = "smg1" -- What ammo type this gun uses.
 
 SWEP.ChamberSize = 1 -- The amount of rounds this gun can chamber.
-SWEP.ClipSize = 30 -- Self-explanatory.
+SWEP.ClipSize = 20 -- Self-explanatory.
 SWEP.SupplyLimit = 6
 
 SWEP.AmmoPerShot = 1 -- Ammo to use per shot
@@ -326,7 +326,7 @@ SWEP.BobWalkMult = 0.5 -- same but for all non sprint actions
 SWEP.ViewModelFOVBase = 80
 
 SWEP.IronSights = {
-    Pos = Vector(-2.75, -1.5, 1.84),
+    Pos = Vector(-2.75, -0.5, 1.84),
     Ang = Angle(-0.3, -0.9, 0),
     Magnification = 1,
     CrosshairInSights = false,
@@ -368,8 +368,8 @@ SWEP.NearWallPos = Vector(-0, -0, 0.0)
 SWEP.NearWallAng = Angle(20, -10, -10)
 
 SWEP.CustomizeAng = Angle(90, 0, 0)
-SWEP.CustomizePos = Vector(11.2, 36, 8.75)
-SWEP.CustomizeRotateAnchor = Vector(11.5, -2, -5)
+SWEP.CustomizePos = Vector(9, 38, 10)
+SWEP.CustomizeRotateAnchor = Vector(9, -2, -5)
 
 --------
 -- Bones
@@ -380,6 +380,17 @@ SWEP.BulletBones = {
 	[4] = "Bullet_03",
 	[5] = "Bullet_04",
 	[6] = "Bullet_05",
+	[7] = "Bullet_06",
+	[8] = "Bullet_07",
+	[9] = "Bullet_08",
+	[10] = "Bullet_09",
+	[11] = "Bullet_10",
+	[12] = "Bullet_11",
+	[13] = "Bullet_12",
+	[14] = "Bullet_13",
+	[15] = "Bullet_14",
+	[16] = "Bullet_15",
+	[17] = "Bullet_16",
 }
 
 SWEP.HideBones = {
@@ -639,7 +650,7 @@ SWEP.Animations = {
         FireASAP = true,
 		EventTable = {
             {s = "WeaponARC9_STRIBOG_MagOut", t = 0 / 30},
-			{s = "WeaponARC9_STRIBOG_MagIn", t = 36 / 30},
+			{s = "WeaponARC9_STRIBOG_MagIn", t = 34 / 30},
         },
 		IKTimeLine = {
             {
@@ -737,7 +748,7 @@ SWEP.Animations = {
         FireASAP = true,
 		EventTable = {
             {s = "WeaponARC9_STRIBOG_MagCheckOut", t = 0 / 30},
-			{s = "WeaponARC9_STRIBOG_MagCheckIn", t = 90 / 30},
+			{s = "WeaponARC9_STRIBOG_MagCheckIn", t = 91 / 30},
         },
 		IKTimeLine = {
             {
@@ -763,13 +774,12 @@ SWEP.Animations = {
         },
     },
 	["inspect_empty"] = {
-        Source = {"magcheck"},
+        Source = {"magcheck_empty"},
         MinProgress = 0.8,
         FireASAP = true,
 		EventTable = {
-            {s = "WeaponARC9_MP5_MagCheckOut", t = 0 / 30},
-			{s = "WeaponARC9_MP5_MagCheckIn", t = 50 / 30},
-			{s = "WeaponARC9_MP5_MagCheckHit", t = 70 / 30},
+            {s = "WeaponARC9_STRIBOG_MagCheckOut", t = 0 / 30},
+			{s = "WeaponARC9_STRIBOG_MagCheckIn", t = 91 / 30},
         },
 		IKTimeLine = {
             {
@@ -783,12 +793,12 @@ SWEP.Animations = {
                 rhik = 0
             },
             {
-                t = 0.72,
+                t = 0.8,
                 lhik = 0,
                 rhik = 0
             },
             {
-                t = 0.8,
+                t = 0.9,
                 lhik = 1,
                 rhik = 1
             },

@@ -444,7 +444,7 @@ SWEP.Attachments = {
     {
         PrintName = "Muzzle",
         DefaultAttName = "Standard Muzzle",
-        Category = {"muzzle","muzzle_m4","muzzle_snipers","cod2019_muzzle"},
+        Category = {"muzzle","muzzle_m4","muzzle_snipers","cod2019_muzzle", "scp5k_muzzle_shotgun"},
 		InstalledElements = {"muzzle_none_sa58"},
 		UnInstalledElements = {"muzzle_sa58"},
 		InstallSound = "Generic_Barrel_LargeAttach",
@@ -482,7 +482,7 @@ SWEP.Attachments = {
     {
         PrintName = "Tactical",
         DefaultAttName = "Default",
-        Category = {"cod2019_tac_rail_cylinder"},
+        Category = {"cod2019_tac_rail_cylinder", "scp5k_tactical"},
 		InstallSound = "Generic_Light_LargeDetach",
 		UninstallSound = "Generic_Light_SmallAttach",
         Bone = "weapon",

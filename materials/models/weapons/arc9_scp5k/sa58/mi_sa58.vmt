@@ -6,7 +6,7 @@
     "$bumpmap" "models\weapons\arc9_scp5k\sa58\MI_SA58_n"
     "$phongexponenttexture" "models\weapons\arc9_scp5k\sa58\MI_SA58_e"
 
-    "$color2" "[.4 .4 .4]"
+    "$color2" "[.6 .6 .6]"
 
     "$phong" "1"
     "$phongboost" "5"

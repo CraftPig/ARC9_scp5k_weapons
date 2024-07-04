@@ -463,7 +463,7 @@ SWEP.Attachments = {
     },
 	{
         PrintName = "Bottom/Grip",
-        Category = {"grip","cod2019_grip"},
+        Category = {"grip","cod2019_grip", "scp5k_foregrip"},
         Bone = "weapon",
 		InstallSound = "Generic_Grip_LargeAttach",
 		UninstallSound = "Generic_Grip_LargeDetach",
@@ -474,7 +474,7 @@ SWEP.Attachments = {
     },
 	{
         PrintName = "Tactical",
-        Category = {"cod2019_tac","csgo_tac"},
+        Category = {"cod2019_tac","csgo_tac", "scp5k_tactical"},
 		InstallSound = "Generic_Light_LargeAttach",
 		UninstallSound = "Generic_Light_LargeDetach",
         Bone = "weapon",

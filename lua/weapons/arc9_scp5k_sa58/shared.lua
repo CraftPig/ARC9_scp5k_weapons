@@ -506,10 +506,10 @@ SWEP.Attachments = {
         CorrectiveAng = Angle(0.01, 0.7, 0),
 		Scale = 0.9,
     },
-     {
+    {
         PrintName = "Tactical",
          DefaultAttName = "Default",
-         Category = {"cod2019_tac","csgo_tac"},
+         Category = {"cod2019_tac","csgo_tac", "scp5k_tactical"},
 		 InstallSound = "Generic_Light_LargeDetach",
 		 UninstallSound = "Generic_Light_SmallAttach",
 		 InstalledElements = {"gripthingy_sa58"},
@@ -519,7 +519,7 @@ SWEP.Attachments = {
          Pos = Vector(1, -10.5, 1.1),
          Ang = Angle(0, 90, -90),
 		 Scale = 1.1,
-     },
+    },
     {
         PrintName = "Ammo",
         Bone = "weapon",

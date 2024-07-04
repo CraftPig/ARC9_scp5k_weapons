@@ -553,7 +553,7 @@ SWEP.Attachments = {
     {
         PrintName = "Tactical",
         DefaultAttName = "Default",
-        Category = {"cod2019_tac","csgo_tac"},
+        Category = {"cod2019_tac","csgo_tac", "scp5k_tactical"},
 		InstalledElements = {"gripside_tavorx95_none"},
 		UnInstalledElements = {"gripside_tavorx95"},
 		InstallSound = "Generic_Light_LargeDetach",
